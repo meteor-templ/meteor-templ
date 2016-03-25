@@ -5,6 +5,45 @@
 
 <body>
   {{> Drops}}
+  
+  <script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+    ga('create', 'UA-75594917-1', 'auto');
+    ga('send', 'pageview');
+  </script>
+  
+<!-- Yandex.Metrika counter -->
+<script type="text/javascript">
+    (function (d, w, c) {
+        (w[c] = w[c] || []).push(function() {
+            try {
+                w.yaCounter36330865 = new Ya.Metrika({
+                    id:36330865,
+                    clickmap:true,
+                    trackLinks:true,
+                    accurateTrackBounce:true,
+                    webvisor:true
+                });
+            } catch(e) { }
+        });
+
+        var n = d.getElementsByTagName("script")[0],
+            s = d.createElement("script"),
+            f = function () { n.parentNode.insertBefore(s, n); };
+        s.type = "text/javascript";
+        s.async = true;
+        s.src = "https://mc.yandex.ru/metrika/watch.js";
+
+        if (w.opera == "[object Opera]") {
+            d.addEventListener("DOMContentLoaded", f, false);
+        } else { f(); }
+    })(document, window, "yandex_metrika_callbacks");
+</script>
+<noscript><div><img src="https://mc.yandex.ru/watch/36330865" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
+<!-- /Yandex.Metrika counter -->
 </body>
 
 <template name="/">
@@ -480,7 +519,7 @@
       <h2>Handy templates</h2>
       <h5>If the drop is a template that does not mean that content can not be set in place.</h5>
       {{#Drop template='handy-dropper' trigger='tooltip' position='tcc'}}
-        <button class="btn btn-default" style="margin: 10px;">tcc</button>
+        <button class="btn btn-default btn-templ-drop" style="margin: 10px;">tcc</button>
       {{else}}
         Handy content...
       {{/Drop}}
@@ -495,7 +534,7 @@
 
 {{lodash.unescape "&lt;template name=&#39;page&#39;&gt;"}}
   {{lodash.toString "{{#Drop template='content' trigger='tooltip' position='tcc'}}"}}
-      <button class="btn btn-default" style="margin: 10px;">tcc</button>
+      <button class="btn btn-default btn-templ-drop" style="margin: 10px;">tcc</button>
   {{lodash.toString "{{else}}"}}
       Handy content...
   {{lodash.toString "{{/Drop}}"}}

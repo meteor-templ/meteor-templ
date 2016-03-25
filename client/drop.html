@@ -15,35 +15,33 @@
     ga('send', 'pageview');
   </script>
   
-<!-- Yandex.Metrika counter -->
-<script type="text/javascript">
-    (function (d, w, c) {
-        (w[c] = w[c] || []).push(function() {
-            try {
-                w.yaCounter36330865 = new Ya.Metrika({
-                    id:36330865,
-                    clickmap:true,
-                    trackLinks:true,
-                    accurateTrackBounce:true,
-                    webvisor:true
-                });
-            } catch(e) { }
-        });
-
-        var n = d.getElementsByTagName("script")[0],
-            s = d.createElement("script"),
-            f = function () { n.parentNode.insertBefore(s, n); };
-        s.type = "text/javascript";
-        s.async = true;
-        s.src = "https://mc.yandex.ru/metrika/watch.js";
-
-        if (w.opera == "[object Opera]") {
-            d.addEventListener("DOMContentLoaded", f, false);
-        } else { f(); }
-    })(document, window, "yandex_metrika_callbacks");
-</script>
-<noscript><div><img src="https://mc.yandex.ru/watch/36330865" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
-<!-- /Yandex.Metrika counter -->
+  <script type="text/javascript">
+      (function (d, w, c) {
+          (w[c] = w[c] || []).push(function() {
+              try {
+                  w.yaCounter36330865 = new Ya.Metrika({
+                      id:36330865,
+                      clickmap:true,
+                      trackLinks:true,
+                      accurateTrackBounce:true,
+                      webvisor:true
+                  });
+              } catch(e) { }
+          });
+  
+          var n = d.getElementsByTagName("script")[0],
+              s = d.createElement("script"),
+              f = function () { n.parentNode.insertBefore(s, n); };
+          s.type = "text/javascript";
+          s.async = true;
+          s.src = "https://mc.yandex.ru/metrika/watch.js";
+  
+          if (w.opera == "[object Opera]") {
+              d.addEventListener("DOMContentLoaded", f, false);
+          } else { f(); }
+      })(document, window, "yandex_metrika_callbacks");
+  </script>
+  <noscript><div><img src="https://mc.yandex.ru/watch/36330865" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
 </body>
 
 <template name="/">
@@ -651,6 +649,49 @@
 {{/markdown}}
     </div>
     <div class="container text-center">
+      <h2>Themes</h2>
+      <h5>Just a template wrapper for your framework.</h5>
+      <h5>Attention! Template <kbd>DropThemeBootstrap</kbd> is already built, it does not need to declare yourself.</h5>
+      {{#Drop template='bootstrap' trigger='tooltip' position='rbb' theme='DropThemeBootstrap'}}
+        {{#Drop template='bootstrap' trigger='tooltip' position='bcc' theme='DropThemeBootstrap'}}
+          {{#Drop template='bootstrap' trigger='tooltip' position='lbm' theme='DropThemeBootstrap'}}
+          <button class="btn btn-default" style="margin: 10px;">bootstrap</button>
+          {{/Drop}}
+        {{/Drop}}
+      {{/Drop}}
+    </div>
+    <div class="container">
+{{#markdown}}
+```html
+<body>{{lodash.toString "{{> Drops}}"}}</body>
+
+{{lodash.unescape "&lt;template name=&#39;page&#39;&gt;"}}
+  {{lodash.toString "{{#Drop template='bootstrap' trigger='tooltip' position='rbb' theme='DropThemeBootstrap'}}"}}
+    {{lodash.toString "{{#Drop template='bootstrap' trigger='tooltip' position='bcc' theme='DropThemeBootstrap'}}"}}
+      {{lodash.toString "{{#Drop template='bootstrap' trigger='tooltip' position='lbm' theme='DropThemeBootstrap'}}"}}
+        <button class="btn btn-default" style="margin: 10px;">bootstrap</button>
+      {{lodash.toString "{{/Drop}}"}}
+    {{lodash.toString "{{/Drop}}"}}
+  {{lodash.toString "{{/Drop}}"}}
+{{lodash.unescape "&lt;/template&gt;"}}
+
+{{lodash.unescape "&lt;template name=&#39;bootstrap&#39;&gt;"}}
+  <h3 class="popover-title">Title</h3>
+  <div class="popover-content">
+    <p>contenent</p>
+  </div>
+{{lodash.unescape "&lt;/template&gt;"}}
+
+{{lodash.unescape "&lt;template name=&#39;DropThemeBootstrap&#39;&gt;"}}
+  <div class="popover {{lodash.toString "{{_position.direction}}"}}" style="display: block; opacity: 1; position: static; margin-{{lodash.toString "{{_position.primaryKey}}"}}: 10px; margin-{{lodash.toString "{{Drop.invert _position.innerKey}}"}}: -10px;">
+      <div class="arrow" style="position: absolute; {{lodash.toString "{{_position.primaryKey}}"}}: 0px; {{lodash.toString "{{_position.secondaryKey}}"}}: {{lodash.toString "{{_position.arrow}}"}}px;"></div>
+      {{lodash.toString "{{> UI.contentBlock}}"}}
+  </div>
+{{lodash.unescape "&lt;/template&gt;"}}
+```
+{{/markdown}}
+    </div>
+    <div class="container text-center">
       <h2>Coming soon...</h2>
       <div class="col-xs-12 col-sm-12 col-md-8 col-md-offset-2 col-lg-8 col-lg-offset-2">
         <ul class="text-left">
@@ -658,7 +699,6 @@
           <li>Momentum animation out of box.</li>
           <li>Auto positions.</li>
           <li>Multiple positions.</li>
-          <li>Themes for <kbd>bootstrap-3</kbd> and <kbd>semantic-ui</kbd>.</li>
           <li>SVG examples (d3 too).</li>
           <li>Handy watchers for some events as <kbd>jquery-ui start-drag-stop</kbd> or simple <kbd>setTimeout</kbd>.</li>
         </ul>
@@ -726,5 +766,12 @@
     </div>
     <div style="background-color: black; color: white; padding: 10px; margin-{{_position.primaryKey}}: 10px; width: 30px; height: 30px;">
     </div>
+  </div>
+</template>
+
+<template name='bootstrap'>
+  <h3 class="popover-title">Title</h3>
+  <div class="popover-content">
+    <p>contenent</p>
   </div>
 </template>

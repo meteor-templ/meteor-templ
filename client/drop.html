@@ -1,0 +1,674 @@
+<head>
+  <title>drop</title>
+  <link href='https://fonts.googleapis.com/css?family=Capriola' rel='stylesheet' type='text/css'>
+</head>
+
+<body>
+  {{> Drops}}
+</body>
+
+<template name="/">
+	<div class="background"></div>
+	<div class="document">
+		{{> navbar class="navbar-default navbar-fixed-top hidden-xs"}}
+		{{> navbar class="navbar-default visible-xs-block"}}
+  </div>
+  <table style="position: absolute; width: 100%; height: 100%;">
+    <tr>
+      <td>
+        <img src="/templ.png" class="center-block img-responsive">
+        <div class="text-center" style="position: relative;">
+          <h1>TEMPL</h1>
+          <p>Handy reactive templates for different purposes.</p>
+        </div>
+        <div style="position: absolute; bottom: 0; left: 0; width: 100%; text-align: center;">
+          With love <i class="glyphicon glyphicon-heart text-danger"></i> from Russia
+        </div>
+      </td>
+    </tr>
+  </table>
+</template>
+
+<template name="/drop">
+	<div class="background"></div>
+	<div class="document">
+		{{> navbar class="navbar-default navbar-fixed-top hidden-xs"}}
+		{{> navbar class="navbar-default visible-xs-block"}}
+    <div class="container text-center">
+      <img src="/templ.png">
+    </div>
+    <div class="container text-center">
+      <h1>templ:drop</h1>
+      <h5>Realy fully customizable, and reactive drops, dropdowns, tooltips and dropmenus for Meteor.</h5>
+      <div class="col-xs-12 col-sm-12 col-md-8 col-md-offset-2 col-lg-8 col-lg-offset-2">
+        <ul class="text-left">
+          <li>Fully expandable triggers. Just add your trigger to <kbd>Drag._triggers</kbd> object.</li>
+          <li>Fully expandable positions. Just wrap <kbd>Drag._position</kbd> method.</li>
+          <li>Fully expandable arrows. Just use variable <kbd>_position</kbd> in you drop template.</li>
+        </ul>
+      </div>
+    </div>
+    <div class="container text-center">
+      <h2>Many positions</h2>
+      <h5>You can adaptively use this ability inside your drop for arrow generating.</h5>
+    </div>
+    <div class="container text-center">
+      <div class="col-xs-6 col-sm-3 col-md-2 col-md-offset-2 col-lg-1 col-lg-offset-4">
+        {{#Drop template='dropper' trigger='tooltip' position='t'}}
+            <button class="btn btn-default btn-templ-drop btn-templ-drop-focus">
+              t
+            </button>
+        {{/Drop}}
+      </div>
+      <div class="col-xs-6 col-sm-3 col-md-2 col-lg-1">
+        {{#Drop template='dropper' trigger='tooltip' position='b'}}
+            <button class="btn btn-default btn-templ-drop btn-templ-drop-focus">
+              b
+            </button>
+        {{/Drop}}
+      </div>
+      <div class="col-xs-6 col-sm-3 col-md-2 col-lg-1">
+        {{#Drop template='dropper' trigger='tooltip' position='l'}}
+            <button class="btn btn-default btn-templ-drop btn-templ-drop-focus">
+              l
+            </button>
+        {{/Drop}}
+      </div>
+      <div class="col-xs-6 col-sm-3 col-md-2 col-lg-1">
+        {{#Drop template='dropper' trigger='tooltip' position='r'}}
+            <button class="btn btn-default btn-templ-drop btn-templ-drop-focus">
+              r
+            </button>
+        {{/Drop}}
+      </div>
+    </div>
+    <div class="container text-center">
+      <div class="col-xs-6 col-sm-3 col-md-2 col-lg-1">
+        {{#Drop template='dropper' trigger='tooltip' position='tll'}}
+            <button class="btn btn-default btn-templ-drop">
+              tll
+            </button>
+        {{/Drop}}
+      </div>
+      <div class="col-xs-6 col-sm-3 col-md-2 col-lg-1">
+        {{#Drop template='dropper' trigger='tooltip' position='tlc'}}
+            <button class="btn btn-default btn-templ-drop">
+              tlc
+            </button>
+        {{/Drop}}
+      </div>
+      <div class="col-xs-6 col-sm-3 col-md-2 col-lg-1">
+        {{#Drop template='dropper' trigger='tooltip' position='tlr'}}
+            <button class="btn btn-default btn-templ-drop">
+              tlr
+            </button>
+        {{/Drop}}
+      </div>
+      <div class="col-xs-6 col-sm-3 col-md-2 col-lg-1">
+        {{#Drop template='dropper' trigger='tooltip' position='tcl'}}
+            <button class="btn btn-default btn-templ-drop">
+              tcl
+            </button>
+        {{/Drop}}
+      </div>
+      <div class="col-xs-6 col-sm-3 col-md-2 col-lg-1">
+        {{#Drop template='dropper' trigger='tooltip' position='tcc'}}
+            <button class="btn btn-default btn-templ-drop btn-templ-drop-focus">
+              tcc
+            </button>
+        {{/Drop}}
+      </div>
+      <div class="col-xs-6 col-sm-3 col-md-2 col-lg-1">
+        {{#Drop template='dropper' trigger='tooltip' position='tcr'}}
+            <button class="btn btn-default btn-templ-drop">
+              tcr
+            </button>
+        {{/Drop}}
+      </div>
+      <div class="col-xs-6 col-sm-3 col-md-2 col-lg-1">
+        {{#Drop template='dropper' trigger='tooltip' position='trl'}}
+            <button class="btn btn-default btn-templ-drop">
+              trl
+            </button>
+        {{/Drop}}
+      </div>
+      <div class="col-xs-6 col-sm-3 col-md-2 col-lg-1">
+        {{#Drop template='dropper' trigger='tooltip' position='trc'}}
+            <button class="btn btn-default btn-templ-drop">
+              trc
+            </button>
+        {{/Drop}}
+      </div>
+      <div class="col-xs-6 col-sm-3 col-md-2 col-lg-1">
+        {{#Drop template='dropper' trigger='tooltip' position='trr'}}
+            <button class="btn btn-default btn-templ-drop">
+              trr
+            </button>
+        {{/Drop}}
+      </div>
+      <div class="col-xs-6 col-sm-3 col-md-2 col-lg-1">
+        {{#Drop template='dropper' trigger='tooltip' position='bll'}}
+            <button class="btn btn-default btn-templ-drop">
+              bll
+            </button>
+        {{/Drop}}
+      </div>
+      <div class="col-xs-6 col-sm-3 col-md-2 col-lg-1">
+        {{#Drop template='dropper' trigger='tooltip' position='blc'}}
+            <button class="btn btn-default btn-templ-drop">
+              blc
+            </button>
+        {{/Drop}}
+      </div>
+      <div class="col-xs-6 col-sm-3 col-md-2 col-lg-1">
+        {{#Drop template='dropper' trigger='tooltip' position='blr'}}
+            <button class="btn btn-default btn-templ-drop">
+              blr
+            </button>
+        {{/Drop}}
+      </div>
+      <div class="col-xs-6 col-sm-3 col-md-2 col-lg-1">
+        {{#Drop template='dropper' trigger='tooltip' position='bcl'}}
+            <button class="btn btn-default btn-templ-drop">
+              bcl
+            </button>
+        {{/Drop}}
+      </div>
+      <div class="col-xs-6 col-sm-3 col-md-2 col-lg-1">
+        {{#Drop template='dropper' trigger='tooltip' position='bcc'}}
+            <button class="btn btn-default btn-templ-drop btn-templ-drop-focus">
+              bcc
+            </button>
+        {{/Drop}}
+      </div>
+      <div class="col-xs-6 col-sm-3 col-md-2 col-lg-1">
+        {{#Drop template='dropper' trigger='tooltip' position='bcr'}}
+            <button class="btn btn-default btn-templ-drop">
+              bcr
+            </button>
+        {{/Drop}}
+      </div>
+      <div class="col-xs-6 col-sm-3 col-md-2 col-lg-1">
+        {{#Drop template='dropper' trigger='tooltip' position='brl'}}
+            <button class="btn btn-default btn-templ-drop">
+              brl
+            </button>
+        {{/Drop}}
+      </div>
+      <div class="col-xs-6 col-sm-3 col-md-2 col-lg-1">
+        {{#Drop template='dropper' trigger='tooltip' position='brc'}}
+            <button class="btn btn-default btn-templ-drop">
+              brc
+            </button>
+        {{/Drop}}
+      </div>
+      <div class="col-xs-6 col-sm-3 col-md-2 col-lg-1">
+        {{#Drop template='dropper' trigger='tooltip' position='brr'}}
+            <button class="btn btn-default btn-templ-drop">
+              brr
+            </button>
+        {{/Drop}}
+      </div>
+      <div class="col-xs-6 col-sm-3 col-md-2 col-lg-1">
+        {{#Drop template='dropper' trigger='tooltip' position='ltt'}}
+            <button class="btn btn-default btn-templ-drop">
+              ltt
+            </button>
+        {{/Drop}}
+      </div>
+      <div class="col-xs-6 col-sm-3 col-md-2 col-lg-1">
+        {{#Drop template='dropper' trigger='tooltip' position='ltm'}}
+            <button class="btn btn-default btn-templ-drop">
+              ltm
+            </button>
+        {{/Drop}}
+      </div>
+      <div class="col-xs-6 col-sm-3 col-md-2 col-lg-1">
+        {{#Drop template='dropper' trigger='tooltip' position='ltb'}}
+            <button class="btn btn-default btn-templ-drop">
+              ltb
+            </button>
+        {{/Drop}}
+      </div>
+      <div class="col-xs-6 col-sm-3 col-md-2 col-lg-1">
+        {{#Drop template='dropper' trigger='tooltip' position='lmt'}}
+            <button class="btn btn-default btn-templ-drop">
+              lmt
+            </button>
+        {{/Drop}}
+      </div>
+      <div class="col-xs-6 col-sm-3 col-md-2 col-lg-1">
+        {{#Drop template='dropper' trigger='tooltip' position='lmm'}}
+            <button class="btn btn-default btn-templ-drop btn-templ-drop-focus">
+              lmm
+            </button>
+        {{/Drop}}
+      </div>
+      <div class="col-xs-6 col-sm-3 col-md-2 col-lg-1">
+        {{#Drop template='dropper' trigger='tooltip' position='lmb'}}
+            <button class="btn btn-default btn-templ-drop">
+              lmb
+            </button>
+        {{/Drop}}
+      </div>
+      <div class="col-xs-6 col-sm-3 col-md-2 col-lg-1">
+        {{#Drop template='dropper' trigger='tooltip' position='lbt'}}
+            <button class="btn btn-default btn-templ-drop">
+              lbt
+            </button>
+        {{/Drop}}
+      </div>
+      <div class="col-xs-6 col-sm-3 col-md-2 col-lg-1">
+        {{#Drop template='dropper' trigger='tooltip' position='lbm'}}
+            <button class="btn btn-default btn-templ-drop">
+              lbm
+            </button>
+        {{/Drop}}
+      </div>
+      <div class="col-xs-6 col-sm-3 col-md-2 col-lg-1">
+        {{#Drop template='dropper' trigger='tooltip' position='lbb'}}
+            <button class="btn btn-default btn-templ-drop">
+              lbb
+            </button>
+        {{/Drop}}
+      </div>
+      <div class="col-xs-6 col-sm-3 col-md-2 col-lg-1">
+        {{#Drop template='dropper' trigger='tooltip' position='rtt'}}
+            <button class="btn btn-default btn-templ-drop">
+              rtt
+            </button>
+        {{/Drop}}
+      </div>
+      <div class="col-xs-6 col-sm-3 col-md-2 col-lg-1">
+        {{#Drop template='dropper' trigger='tooltip' position='rtm'}}
+            <button class="btn btn-default btn-templ-drop">
+              rtm
+            </button>
+        {{/Drop}}
+      </div>
+      <div class="col-xs-6 col-sm-3 col-md-2 col-lg-1">
+        {{#Drop template='dropper' trigger='tooltip' position='rtb'}}
+            <button class="btn btn-default btn-templ-drop">
+              rtb
+            </button>
+        {{/Drop}}
+      </div>
+      <div class="col-xs-6 col-sm-3 col-md-2 col-lg-1">
+        {{#Drop template='dropper' trigger='tooltip' position='rmt'}}
+            <button class="btn btn-default btn-templ-drop">
+              rmt
+            </button>
+        {{/Drop}}
+      </div>
+      <div class="col-xs-6 col-sm-3 col-md-2 col-lg-1">
+        {{#Drop template='dropper' trigger='tooltip' position='rmm'}}
+            <button class="btn btn-default btn-templ-drop btn-templ-drop-focus">
+              rmm
+            </button>
+        {{/Drop}}
+      </div>
+      <div class="col-xs-6 col-sm-3 col-md-2 col-lg-1">
+        {{#Drop template='dropper' trigger='tooltip' position='rmb'}}
+            <button class="btn btn-default btn-templ-drop">
+              rmb
+            </button>
+        {{/Drop}}
+      </div>
+      <div class="col-xs-6 col-sm-3 col-md-2 col-lg-1">
+        {{#Drop template='dropper' trigger='tooltip' position='rbt'}}
+            <button class="btn btn-default btn-templ-drop">
+              rbt
+            </button>
+        {{/Drop}}
+      </div>
+      <div class="col-xs-6 col-sm-3 col-md-2 col-lg-1">
+        {{#Drop template='dropper' trigger='tooltip' position='rbm'}}
+            <button class="btn btn-default btn-templ-drop">
+              rbm
+            </button>
+        {{/Drop}}
+      </div>
+      <div class="col-xs-6 col-sm-3 col-md-2 col-lg-1">
+        {{#Drop template='dropper' trigger='tooltip' position='rbb'}}
+            <button class="btn btn-default btn-templ-drop">
+              rbb
+            </button>
+        {{/Drop}}
+      </div>
+      <div class="col-xs-6 col-sm-3 col-md-2 col-lg-1">
+        {{#Drop template='dropper' trigger='tooltip' position='tl'}}
+            <button class="btn btn-default btn-templ-drop">
+              tl
+            </button>
+        {{/Drop}}
+      </div>
+      <div class="col-xs-6 col-sm-3 col-md-2 col-lg-1">
+        {{#Drop template='dropper' trigger='tooltip' position='tc'}}
+            <button class="btn btn-default btn-templ-drop btn-templ-drop-focus">
+              tc
+            </button>
+        {{/Drop}}
+      </div>
+      <div class="col-xs-6 col-sm-3 col-md-2 col-lg-1">
+        {{#Drop template='dropper' trigger='tooltip' position='tr'}}
+            <button class="btn btn-default btn-templ-drop">
+              tr
+            </button>
+        {{/Drop}}
+      </div>
+      <div class="col-xs-6 col-sm-3 col-md-2 col-lg-1">
+        {{#Drop template='dropper' trigger='tooltip' position='bl'}}
+            <button class="btn btn-default btn-templ-drop">
+              bl
+            </button>
+        {{/Drop}}
+      </div>
+      <div class="col-xs-6 col-sm-3 col-md-2 col-lg-1">
+        {{#Drop template='dropper' trigger='tooltip' position='bc'}}
+            <button class="btn btn-default btn-templ-drop btn-templ-drop-focus">
+              bc
+            </button>
+        {{/Drop}}
+      </div>
+      <div class="col-xs-6 col-sm-3 col-md-2 col-lg-1">
+        {{#Drop template='dropper' trigger='tooltip' position='br'}}
+            <button class="btn btn-default btn-templ-drop">
+              br
+            </button>
+        {{/Drop}}
+      </div>
+      <div class="col-xs-6 col-sm-3 col-md-2 col-lg-1">
+        {{#Drop template='dropper' trigger='tooltip' position='lt'}}
+            <button class="btn btn-default btn-templ-drop">
+              lt
+            </button>
+        {{/Drop}}
+      </div>
+      <div class="col-xs-6 col-sm-3 col-md-2 col-lg-1">
+        {{#Drop template='dropper' trigger='tooltip' position='lm'}}
+            <button class="btn btn-default btn-templ-drop btn-templ-drop-focus">
+              lm
+            </button>
+        {{/Drop}}
+      </div>
+      <div class="col-xs-6 col-sm-3 col-md-2 col-lg-1">
+        {{#Drop template='dropper' trigger='tooltip' position='lb'}}
+            <button class="btn btn-default btn-templ-drop">
+              lb
+            </button>
+        {{/Drop}}
+      </div>
+      <div class="col-xs-6 col-sm-3 col-md-2 col-lg-1">
+        {{#Drop template='dropper' trigger='tooltip' position='rt'}}
+            <button class="btn btn-default btn-templ-drop">
+              rt
+            </button>
+        {{/Drop}}
+      </div>
+      <div class="col-xs-6 col-sm-3 col-md-2 col-lg-1">
+        {{#Drop template='dropper' trigger='tooltip' position='rm'}}
+            <button class="btn btn-default btn-templ-drop btn-templ-drop-focus">
+              rm
+            </button>
+        {{/Drop}}
+      </div>
+      <div class="col-xs-6 col-sm-3 col-md-2 col-lg-1">
+        {{#Drop template='dropper' trigger='tooltip' position='rb'}}
+            <button class="btn btn-default btn-templ-drop">
+              rb
+            </button>
+        {{/Drop}}
+      </div>
+    </div>
+    <div class="container">
+{{#markdown}}
+```html
+<body>{{lodash.toString "{{> Drops}}"}}</body>
+
+{{lodash.unescape "&lt;template name=&#39;page&#39;&gt;"}}
+  {{lodash.toString "{{#Drop template='drop' trigger='tooltip' position='tcc'}}"}}
+      <button class="btn btn-default">tcc</button>
+  {{lodash.toString "{{/Drop}}"}}
+{{lodash.unescape "&lt;/template&gt;"}}
+
+{{lodash.unescape "&lt;template name=&#39;drop&#39;&gt;"}}
+  <div style="background-color: black; color: white; padding: 10px;">
+    {{lodash.toString "{{_position.direction}} {{_position.outerKey}} {{_position.innerKey}}"}}
+  </div>
+{{lodash.unescape "&lt;/template&gt;"}}
+```
+{{/markdown}}
+    </div>
+    <div class="container text-center">
+      <h2>Triggers</h2>
+      <h5>Many popular triggers for different tasks of interfaces.</h5>
+      <div class="text-center">
+        {{#Drop template='handy-dropper' trigger='tooltip' position='b'}}
+          <button class="btn btn-default" style="margin: 10px;">tooltip</button>
+        {{else}}
+          tooltip
+        {{/Drop}}
+        {{#Drop template='handy-dropper' trigger='toggle' position='b'}}
+          <button class="btn btn-default" style="margin: 10px;">toggle</button>
+        {{else}}
+          toggle
+        {{/Drop}}
+        {{#Drop template='handy-dropper' trigger='dropmenu' position='b'}}
+          <button class="btn btn-default" style="margin: 10px;">dropmenu</button>
+        {{else}}
+          dropmenu
+        {{/Drop}}
+        <button class="btn btn-default disabled" style="margin: 10px;">dropdown</button>
+      </div>
+    </div>
+    <div class="container text-center">
+      <h2>Handy templates</h2>
+      <h5>If the drop is a template that does not mean that content can not be set in place.</h5>
+      {{#Drop template='handy-dropper' trigger='tooltip' position='tcc'}}
+        <button class="btn btn-default" style="margin: 10px;">tcc</button>
+      {{else}}
+        Handy content...
+      {{/Drop}}
+    </div>
+    <div class="container">
+{{#markdown}}
+```html
+<body>{{lodash.toString "{{> Drops}}"}}</body>
+
+{{lodash.unescape "&lt;template name=&#39;page&#39;&gt;"}}
+  {{lodash.toString "{{#Drop template='content' trigger='tooltip' position='tcc'}}"}}
+      <button class="btn btn-default" style="margin: 10px;">tcc</button>
+  {{lodash.toString "{{else}}"}}
+      Handy content...
+  {{lodash.toString "{{/Drop}}"}}
+{{lodash.unescape "&lt;/template&gt;"}}
+
+{{lodash.unescape "&lt;template name=&#39;content&#39;&gt;"}}
+  <div style="background-color: black; color: white; padding: 10px;">
+    {{lodash.toString "{{> UI.contentBlock}}"}}
+  </div>
+{{lodash.unescape "&lt;/template&gt;"}}
+```
+{{/markdown}}
+    </div>
+    <div class="container text-center">
+      <h2>Nesting</h2>
+      <h5>You can freely put one drop inside other drop. You need only to pass the <kbd>parent</kbd> argument.</h5>
+      {{#Drop template='file' trigger='toggle' position='b'}}
+          <button class="btn btn-default btn-templ-drop">
+            file<br><small>(click)</small>
+          </button>
+      {{/Drop}}
+    </div>
+    <div class="container">
+{{#markdown}}
+```html
+<body>{{lodash.toString "{{> Drops}}"}}</body>
+
+{{lodash.unescape "&lt;template name=&#39;page&#39;&gt;"}}
+  {{lodash.toString "{{#Drop template='file' trigger='toggle' position='b'}}"}}
+    <button class="btn btn-default btn-templ-drop">
+      file<br><small>(click)</small>
+    </button>
+  {{lodash.toString "{{/Drop}}"}}
+{{lodash.unescape "&lt;/template&gt;"}}
+
+{{lodash.unescape "&lt;template name=&#39;file&#39;&gt;"}}
+  <div class="list-group">
+    {{lodash.toString "{{#Drop template='saveas' trigger='dropmenu' position='r' parent=_id}}"}}
+      <a href="#" class="list-group-item">
+        Save as <small>(dropmenu)</small>
+      </a>
+    {{lodash.toString "{{/Drop}}"}}
+  </div>
+{{lodash.unescape "&lt;/template&gt;"}}
+
+{{lodash.unescape "&lt;template name=&#39;saveas&#39;&gt;"}}
+  <div class="list-group">
+    {{lodash.toString "{{#Drop template='raster' trigger='toggle' position='trl' parent=_id}}"}}
+      <a href="#" class="list-group-item">
+        raster <small>(click)</small>
+      </a>
+    {{lodash.toString "{{/Drop}}"}}
+    {{lodash.toString "{{#Drop template='vector' trigger='dropmenu' position='brl' parent=_id}}"}}
+      <a href="#" class="list-group-item">
+        vector <small>(dropmenu)</small>
+      </a>
+    {{lodash.toString "{{/Drop}}"}}
+  </div>
+{{lodash.unescape "&lt;/template&gt;"}}
+
+{{lodash.unescape "&lt;template name=&#39;raster&#39;&gt;"}}
+  <div class="btn-group">
+    <button type="button" class="btn btn-default">JPG</button>
+    <button type="button" class="btn btn-default">GIF</button>
+    <button type="button" class="btn btn-default">PNG</button>
+  </div>
+{{lodash.unescape "&lt;/template&gt;"}}
+
+{{lodash.unescape "&lt;template name=&#39;vector&#39;&gt;"}}
+  <div class="btn-group">
+    <button type="button" class="btn btn-default">SVG</button>
+    <button type="button" class="btn btn-default">EPS</button>
+  </div>
+{{lodash.unescape "&lt;/template&gt;"}}
+```
+{{/markdown}}
+    </div>
+    <div class="container text-center">
+      <h2>Custom arrows</h2>
+      <h5>Use <kbd>_position</kbd> variable in template for the positioning of the arrow.</h5>
+      {{#Drop template='arrowed' trigger='tooltip' position='rbb'}}
+        {{#Drop template='arrowed' trigger='tooltip' position='bcc'}}
+          {{#Drop template='arrowed' trigger='tooltip' position='lbm'}}
+          <button class="btn btn-default" style="margin: 10px;">arrowed</button>
+          {{/Drop}}
+        {{/Drop}}
+      {{/Drop}}
+    </div>
+    <div class="container">
+{{#markdown}}
+```html
+<body>{{lodash.toString "{{> Drops}}"}}</body>
+
+{{lodash.unescape "&lt;template name=&#39;page&#39;&gt;"}}
+  {{lodash.toString "{{#Drop template='arrowed' trigger='tooltip' position='rbb'}}"}}
+    {{lodash.toString "{{#Drop template='arrowed' trigger='tooltip' position='bcc'}}"}}
+      {{lodash.toString "{{#Drop template='arrowed' trigger='tooltip' position='lbm'}}"}}
+        <button class="btn btn-default" style="margin: 10px;">arrowed</button>
+      {{lodash.toString "{{/Drop}}"}}
+    {{lodash.toString "{{/Drop}}"}}
+  {{lodash.toString "{{/Drop}}"}}
+{{lodash.unescape "&lt;/template&gt;"}}
+
+{{lodash.unescape "&lt;template name=&#39;arrowed&#39;&gt;"}}
+  <div>
+    <div style="overflow: hidden; position: absolute; top: 0; left: 0; right: 0; bottom: 0;">
+      <div class="triangle-{{lodash.toString "{{_position.primaryKey}}"}}" style="height: 10px; width: 10px; position: absolute; {{lodash.toString "{{_position.primaryKey}}"}}: 0px; {{lodash.toString "{{_position.secondaryKey}}"}}: {{lodash.toString "{{_position.arrow}}"}}px; margin-{{lodash.toString "{{_position.secondaryKey}}"}}: -5px;"></div>
+    </div>
+    <div style="background-color: black; color: white; padding: 10px; margin-{{lodash.toString "{{_position.primaryKey}}"}}: 10px; width: 30px; height: 30px;">
+    </div>
+  </div>
+{{lodash.unescape "&lt;/template&gt;"}}
+```
+{{/markdown}}
+    </div>
+    <div class="container text-center">
+      <h2>Coming soon...</h2>
+      <div class="col-xs-12 col-sm-12 col-md-8 col-md-offset-2 col-lg-8 col-lg-offset-2">
+        <ul class="text-left">
+          <li>More triggers.</li>
+          <li>More positions.</li>
+          <li>Momentum animation out of box.</li>
+          <li>Auto positions.</li>
+          <li>Multiple positions.</li>
+          <li>Themes for <kbd>bootstrap-3</kbd> and <kbd>semantic-ui</kbd>.</li>
+          <li>SVG examples (d3 too).</li>
+          <li>Handy watchers for some events as <kbd>jquery-ui start-drag-stop</kbd> or simple <kbd>setTimeout</kbd>.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</template>
+
+<template name="dropper">
+  <div style="background-color: black; color: white; padding: 10px;">
+    {{_position.direction}} {{_position.outerKey}} {{_position.innerKey}}
+  </div>
+</template>
+
+<template name='handy-dropper'>
+  <div style="background-color: black; color: white; padding: 10px;">
+    {{> UI.contentBlock}}
+  </div>
+</template>
+
+<template name='file'>
+  <div class="list-group">
+    {{#Drop template='saveas' trigger='dropmenu' position='r' parent=_id}}
+      <a href="#" class="list-group-item">
+        Save as <small>(dropmenu)</small>
+      </a>
+    {{/Drop}}
+  </div>
+</template>
+
+<template name='saveas'>
+  <div class="list-group">
+    {{#Drop template='raster' trigger='toggle' position='trl' parent=_id}}
+      <a href="#" class="list-group-item">
+        raster <small>(click)</small>
+      </a>
+    {{/Drop}}
+    {{#Drop template='vector' trigger='dropmenu' position='brl' parent=_id}}
+      <a href="#" class="list-group-item">
+        vector <small>(dropmenu)</small>
+      </a>
+    {{/Drop}}
+  </div>
+</template>
+
+<template name='raster'>
+  <div class="btn-group">
+    <button type="button" class="btn btn-default">JPG</button>
+    <button type="button" class="btn btn-default">GIF</button>
+    <button type="button" class="btn btn-default">PNG</button>
+  </div>
+</template>
+
+<template name='vector'>
+  <div class="btn-group">
+    <button type="button" class="btn btn-default">SVG</button>
+    <button type="button" class="btn btn-default">EPS</button>
+  </div>
+</template>
+
+<template name='arrowed'>
+  <div>
+    <div style="overflow: hidden; position: absolute; top: 0; left: 0; right: 0; bottom: 0;">
+      <div class="triangle-{{_position.primaryKey}}" style="height: 10px; width: 10px; position: absolute; {{_position.primaryKey}}: 0px; {{_position.secondaryKey}}: {{_position.arrow}}px; margin-{{_position.secondaryKey}}: -5px;"></div>
+    </div>
+    <div style="background-color: black; color: white; padding: 10px; margin-{{_position.primaryKey}}: 10px; width: 30px; height: 30px;">
+    </div>
+  </div>
+</template>

@@ -1,0 +1,15 @@
+<template name="navbar">
+	<nav class="navbar {{class}}">
+		<div class="container">
+			<ul class="nav navbar-nav navbar-left">
+				<li class="{{isActivePath '/'}}"><a href="/"><i class="fa fa-fw fa-code fa-rotate-90"></i> Templ</a></li>
+				<li class="{{isActivePath '/drop'}}"><a href="/drop"><i class="fa fa-fw fa-comment"></i> Drop</a></li>
+			</ul>
+			<ul class="nav navbar-nav navbar-right">
+				<li>
+					<a href="https://github.com/meteor-templ"><i class="fa fa-fw fa-github"></i> GitHub</a>
+				</li>
+			</ul>
+		</div>
+	</nav>
+</template>

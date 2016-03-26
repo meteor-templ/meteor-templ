@@ -1,71 +1,3 @@
-<head>
-  <title>drop</title>
-  <link href='https://fonts.googleapis.com/css?family=Capriola' rel='stylesheet' type='text/css'>
-</head>
-
-<body>
-  {{> Drops}}
-  
-  <script>
-    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
-    ga('create', 'UA-75594917-1', 'auto');
-    ga('send', 'pageview');
-  </script>
-  
-  <script type="text/javascript">
-      (function (d, w, c) {
-          (w[c] = w[c] || []).push(function() {
-              try {
-                  w.yaCounter36330865 = new Ya.Metrika({
-                      id:36330865,
-                      clickmap:true,
-                      trackLinks:true,
-                      accurateTrackBounce:true,
-                      webvisor:true
-                  });
-              } catch(e) { }
-          });
-  
-          var n = d.getElementsByTagName("script")[0],
-              s = d.createElement("script"),
-              f = function () { n.parentNode.insertBefore(s, n); };
-          s.type = "text/javascript";
-          s.async = true;
-          s.src = "https://mc.yandex.ru/metrika/watch.js";
-  
-          if (w.opera == "[object Opera]") {
-              d.addEventListener("DOMContentLoaded", f, false);
-          } else { f(); }
-      })(document, window, "yandex_metrika_callbacks");
-  </script>
-  <noscript><div><img src="https://mc.yandex.ru/watch/36330865" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
-</body>
-
-<template name="/">
-	<div class="background"></div>
-	<div class="document">
-		{{> navbar class="navbar-default navbar-fixed-top hidden-xs"}}
-		{{> navbar class="navbar-default visible-xs-block"}}
-  </div>
-  <table style="position: absolute; width: 100%; height: 100%;">
-    <tr>
-      <td>
-        <img src="/templ.png" class="center-block img-responsive">
-        <div class="text-center" style="position: relative;">
-          <h1>TEMPL</h1>
-          <p>Handy reactive templates for different purposes.</p>
-        </div>
-        <div style="position: absolute; bottom: 0; left: 0; width: 100%; text-align: center;">
-          With love <i class="glyphicon glyphicon-heart text-danger"></i> from Russia
-        </div>
-      </td>
-    </tr>
-  </table>
-</template>
-
 <template name="/drop">
 	<div class="background"></div>
 	<div class="document">
@@ -75,7 +7,7 @@
       <img src="/templ.png">
     </div>
     <div class="container text-center">
-      <h1>templ:drop <a href="https://github.com/meteor-templ/drop"><i class="fa fa-fw fa-github"></i></a></h1>
+      <h1>templ:drop&nbsp;&nbsp;<a href="https://github.com/meteor-templ/drop"><i class="fa fa-github"></i></a> <a href="https://atmospherejs.com/templ/drop"><img src="/meteor.png" style="height: 1em; width: 1em; position: relative; bottom: 0.2em;"></a></h1>
       <h5>Realy fully customizable, and reactive drops, dropdowns, tooltips and dropmenus for Meteor.</h5>
       <div class="col-xs-12 col-sm-12 col-md-8 col-md-offset-2 col-lg-8 col-lg-offset-2">
         <ul class="text-left">
@@ -486,27 +418,27 @@
         {{#Drop template='handy-dropper' trigger='tooltip' position='b'}}
           <button class="btn btn-default" style="margin: 10px;">tooltip<br><small>(hover)</small></button>
         {{else}}
-          tooltip<br><small>(anchor mouseout)</small>
+          tooltip<br><small>(closes anchor mouseout)</small>
         {{/Drop}}
         {{#Drop template='handy-dropper' trigger='toggle' position='b'}}
           <button class="btn btn-default" style="margin: 10px;">toggle<br><small>(click)</small></button>
         {{else}}
-          toggle<br><small>(anchor click)</small>
+          toggle<br><small>(closes anchor click)</small>
         {{/Drop}}
         {{#Drop template='handy-dropper' trigger='dropmenu' position='b'}}
           <button class="btn btn-default" style="margin: 10px;">dropmenu<br><small>(hover)</small></button>
         {{else}}
-          dropmenu<br><small>(mouseout dropmenu)</small>
+          dropmenu<br><small>(closes mouseout dropmenu)</small>
         {{/Drop}}
         {{#Drop template='handy-dropper' trigger='dropdown' position='b'}}
           <button class="btn btn-default" style="margin: 10px;">dropdown<br><small>(click)</small></button>
         {{else}}
-          dropdown<br><small>(click outside)</small>
+          dropdown<br><small>(closes click outside)</small>
         {{/Drop}}
         {{#Drop template='handy-dropper' trigger='popover' position='b'}}
           <button class="btn btn-default" style="margin: 10px;">popover<br><small>(click)</small></button>
         {{else}}
-          popover<br><small>(click anywhere)</small>
+          popover<br><small>(closes click anywhere)</small>
         {{/Drop}}
       </div>
       <div class="text-center">
@@ -521,9 +453,6 @@
       {{else}}
         Handy content...
       {{/Drop}}
-      <div class="text-center">
-        If you have any suggestions, please <a href="https://github.com/meteor-templ/drop/issues/new">issue</a> or pull-request.
-      </div>
     </div>
     <div class="container">
 {{#markdown}}
@@ -616,7 +545,9 @@
       {{#Drop template='arrowed' trigger='tooltip' position='rbb'}}
         {{#Drop template='arrowed' trigger='tooltip' position='bcc'}}
           {{#Drop template='arrowed' trigger='tooltip' position='lbm'}}
+            {{#Drop template='arrowed' trigger='tooltip' position='rtt'}}
           <button class="btn btn-default" style="margin: 10px;">arrowed</button>
+            {{/Drop}}
           {{/Drop}}
         {{/Drop}}
       {{/Drop}}
@@ -630,7 +561,9 @@
   {{lodash.toString "{{#Drop template='arrowed' trigger='tooltip' position='rbb'}}"}}
     {{lodash.toString "{{#Drop template='arrowed' trigger='tooltip' position='bcc'}}"}}
       {{lodash.toString "{{#Drop template='arrowed' trigger='tooltip' position='lbm'}}"}}
+        {{lodash.toString "{{#Drop template='arrowed' trigger='tooltip' position='rtt'}}"}}
         <button class="btn btn-default" style="margin: 10px;">arrowed</button>
+        {{lodash.toString "{{/Drop}}"}}
       {{lodash.toString "{{/Drop}}"}}
     {{lodash.toString "{{/Drop}}"}}
   {{lodash.toString "{{/Drop}}"}}
@@ -652,10 +585,13 @@
       <h2>Themes</h2>
       <h5>Just a template wrapper for your framework.</h5>
       <h5>Attention! Template <kbd>DropThemeBootstrap</kbd> is already built, it does not need to declare yourself.</h5>
+      <h5>You can set default theme in variable <kbd>Drop._theme</kbd>.</h5>
       {{#Drop template='bootstrap' trigger='tooltip' position='rbb' theme='DropThemeBootstrap'}}
         {{#Drop template='bootstrap' trigger='tooltip' position='bcc' theme='DropThemeBootstrap'}}
           {{#Drop template='bootstrap' trigger='tooltip' position='lbm' theme='DropThemeBootstrap'}}
-          <button class="btn btn-default" style="margin: 10px;">bootstrap</button>
+            {{#Drop template='bootstrap' trigger='tooltip' position='rtt' theme='DropThemeBootstrap'}}
+              <button class="btn btn-default" style="margin: 10px;">bootstrap</button>
+            {{/Drop}}
           {{/Drop}}
         {{/Drop}}
       {{/Drop}}
@@ -669,7 +605,9 @@
   {{lodash.toString "{{#Drop template='bootstrap' trigger='tooltip' position='rbb' theme='DropThemeBootstrap'}}"}}
     {{lodash.toString "{{#Drop template='bootstrap' trigger='tooltip' position='bcc' theme='DropThemeBootstrap'}}"}}
       {{lodash.toString "{{#Drop template='bootstrap' trigger='tooltip' position='lbm' theme='DropThemeBootstrap'}}"}}
+        {{lodash.toString "{{#Drop template='bootstrap' trigger='tooltip' position='rtt' theme='DropThemeBootstrap'}}"}}
         <button class="btn btn-default" style="margin: 10px;">bootstrap</button>
+        {{lodash.toString "{{/Drop}}"}}
       {{lodash.toString "{{/Drop}}"}}
     {{lodash.toString "{{/Drop}}"}}
   {{lodash.toString "{{/Drop}}"}}
@@ -678,7 +616,7 @@
 {{lodash.unescape "&lt;template name=&#39;bootstrap&#39;&gt;"}}
   <h3 class="popover-title">Title</h3>
   <div class="popover-content">
-    <p>contenent</p>
+    <p>content</p>
   </div>
 {{lodash.unescape "&lt;/template&gt;"}}
 
@@ -692,11 +630,16 @@
 {{/markdown}}
     </div>
     <div class="container text-center">
+      <h2>Dimentum</h2>
+      <h5>For animation used <a href="https://github.com/percolatestudio/meteor-momentum/">Momentum</a> with plugin <a href="https://github.com/meteor-templ/dimentum">Dimentum</a> for direction animation.</h5>
+      <h5>You can set other plugin in variable <kbd>Drop._momentum</kbd>.</h5>
+      <h5>If you have any suggestions, please <a href="https://github.com/meteor-templ/drop/issues/new">issue</a> or pull-request.</h5>
+    </div>
+    <div class="container text-center">
       <h2>Coming soon...</h2>
       <div class="col-xs-12 col-sm-12 col-md-8 col-md-offset-2 col-lg-8 col-lg-offset-2">
         <ul class="text-left">
           <li>More positions.</li>
-          <li>Momentum animation out of box.</li>
           <li>Auto positions.</li>
           <li>Multiple positions.</li>
           <li>SVG examples (d3 too).</li>
@@ -772,6 +715,6 @@
 <template name='bootstrap'>
   <h3 class="popover-title">Title</h3>
   <div class="popover-content">
-    <p>contenent</p>
+    <p>content</p>
   </div>
 </template>

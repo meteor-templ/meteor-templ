@@ -14,6 +14,9 @@
           <li>Fully expandable triggers. Just add your trigger to <kbd>Drag._triggers</kbd> object.</li>
           <li>Fully expandable positions. Just wrap <kbd>Drag._position</kbd> method.</li>
           <li>Fully expandable arrows. Just use variable <kbd>_position</kbd> in you drop template.</li>
+          <li>Animation in the style of Google Material Design. Drop appear out anchor.</li>
+          <li>All-drops are put into each other!</li>
+          <li>Easy to use with dynamic content and svg.</li>
         </ul>
       </div>
     </div>
@@ -448,6 +451,7 @@
     <div class="container text-center">
       <h2>Handy templates</h2>
       <h5>If the drop is a template that does not mean that content can not be set in place.</h5>
+      <h5>In the context of <kbd>else</kbd> block available full <kbd>template</kbd> context.</h5>
       {{#Drop template='handy-dropper' trigger='tooltip' position='tcc'}}
         <button class="btn btn-default btn-templ-drop" style="margin: 10px;">tcc</button>
       {{else}}
@@ -586,6 +590,7 @@
       <h5>Just a template wrapper for your framework.</h5>
       <h5>Attention! Template <kbd>DropThemeBootstrap</kbd> is already built, it does not need to declare yourself.</h5>
       <h5>You can set default theme in variable <kbd>Drop._theme</kbd>.</h5>
+      <h5>In the context of <kbd>theme</kbd> block available full <kbd>template</kbd> context.</h5>
       {{#Drop template='bootstrap' trigger='tooltip' position='rbb' theme='DropThemeBootstrap'}}
         {{#Drop template='bootstrap' trigger='tooltip' position='bcc' theme='DropThemeBootstrap'}}
           {{#Drop template='bootstrap' trigger='tooltip' position='lbm' theme='DropThemeBootstrap'}}
@@ -636,16 +641,104 @@
       <h5>If you have any suggestions, please <a href="https://github.com/meteor-templ/drop/issues/new">issue</a> or pull-request.</h5>
     </div>
     <div class="container text-center">
-      <h2>Coming soon...</h2>
-      <div class="col-xs-12 col-sm-12 col-md-8 col-md-offset-2 col-lg-8 col-lg-offset-2">
-        <ul class="text-left">
-          <li>More positions.</li>
-          <li>Auto positions.</li>
-          <li>Multiple positions.</li>
-          <li>SVG examples (d3 too).</li>
-          <li>Handy watchers for some events as <kbd>jquery-ui start-drag-stop</kbd> or simple <kbd>setTimeout</kbd>.</li>
-        </ul>
-      </div>
+      <h2>SVG support</h2>
+      <h5>This example uses <a href="http://d3js.org">d3.js</a>.</h5>
+    </div>
+    <div class="text-center">
+      <svg width="100" height="100"></svg>
+    </div>
+    <div class="container">
+{{#markdown}}
+```js
+var svg = d3.select($('svg')[0]);
+
+var anchor = svg
+	.append('circle')
+	.attr('r', 50)
+	.attr('fill', '#000')
+	.attr('cx', 50)
+	.attr('data-drop-anchor', Random.id())
+	.attr('cy', 50)[0][0]
+
+Drop.init({ template: 'arrowed', trigger: 'tooltip', position: 'r', _anchor: anchor });
+Drop.init({ template: 'arrowed', trigger: 'tooltip', position: 'l', _anchor: anchor });
+```
+{{/markdown}}
+    </div>
+    <div class="container text-center">
+      <h2>JavaScript control</h2>
+    </div>
+    <div class="container text-center">
+      <div class="btn btn-default disabled" id="interval" style="margin: 20px;">interval</div>
+    </div>
+    <div class="container">
+{{#markdown}}
+```html
+<div class="btn btn-default disabled" id="interval">interval</div>
+```
+```js
+var positions = ['t','r','b','l'];
+
+// center
+(function() {
+	var instance;
+	var anchor = this.$('#interval')[0];
+	Meteor.setInterval(() => {
+		instance = Drop.show({ template: 'arrowed', _anchor: anchor, position: positions[lodash.random(0, 3)] });
+	}, 2000);
+	Meteor.setTimeout(() => { Meteor.setInterval(() => {
+		Drop.hide(instance);
+	}, 2000); }, 1000);
+})();
+
+// left
+(function() {
+	var instance;
+	Meteor.setInterval(() => {
+		var anchor = Drop.coordinates(this.$('#interval')[0])
+		anchor.left = anchor.left + (anchor.width / 2) - 100;
+		anchor.top = anchor.top + (anchor.height / 2);
+		anchor.width = 0;
+		anchor.height = 0;
+		instance = Drop.show({ template: 'arrowed', _anchor: anchor, position: positions[lodash.random(0, 3)] });
+	}, 2000);
+	Meteor.setInterval(() => {
+		if (Drop._data[instance]) {
+			Drop._data[instance]._anchor.left--;
+			Drop.tick(instance, Drop._data[instance]._anchor);
+		}
+	}, 10);
+	Meteor.setTimeout(() => { Meteor.setInterval(() => {
+		Drop.hide(instance);
+	}, 2000); }, 1000);
+})();
+
+// right	
+(function() {
+	var instance;
+	Meteor.setInterval(() => {
+		var anchor = Drop.coordinates(this.$('#interval')[0])
+		anchor.left = anchor.left + (anchor.width / 2) + 100;
+		anchor.top = anchor.top + (anchor.height / 2);
+		anchor.width = 0;
+		anchor.height = 0;
+		instance = Drop.show({ template: 'arrowed', _anchor: anchor, position: positions[lodash.random(0, 3)] });
+	}, 2000);
+	Meteor.setInterval(() => {
+		if (Drop._data[instance]) {
+			Drop._data[instance]._anchor.left++;
+			Drop.tick(instance, Drop._data[instance]._anchor);
+		}
+	}, 20);
+	Meteor.setTimeout(() => { Meteor.setInterval(() => {
+		Drop.hide(instance);
+	}, 2000); }, 1000);
+})();
+```
+{{/markdown}}
+    </div>
+    <div class="container text-center">
+        With love <i class="glyphicon glyphicon-heart text-danger"></i> from Russia
     </div>
   </div>
 </template>

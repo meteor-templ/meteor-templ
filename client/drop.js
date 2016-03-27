@@ -22,11 +22,14 @@ Template['/drop'].onRendered(function() {
 });
 
 var positions = ['t','r','b','l'];
+	
+var showInterval;
+var hideInterval;
+var instance;
 
-// center
 Template['/drop'].onRendered(function() {
-	var instance;
 	var anchor = this.$('#interval')[0];
+	// var anchor = Drop.coordinates(this.$('#interval')[0]); // Equal
 	Meteor.setInterval(() => {
 		instance = Drop.show({ template: 'arrowed', _anchor: anchor, position: positions[lodash.random(0, 3)] });
 	}, 2000);
@@ -35,48 +38,11 @@ Template['/drop'].onRendered(function() {
 	}, 2000); }, 1000);
 });
 
-// left
-Template['/drop'].onRendered(function() {
-	var instance;
-	Meteor.setInterval(() => {
-		var anchor = Drop.coordinates(this.$('#interval')[0])
-		anchor.left = anchor.left + (anchor.width / 2) - 100;
-		anchor.top = anchor.top + (anchor.height / 2);
-		anchor.width = 0;
-		anchor.height = 0;
-		instance = Drop.show({ template: 'arrowed', _anchor: anchor, position: positions[lodash.random(0, 3)] });
-	}, 2000);
-	Meteor.setInterval(() => {
-		if (Drop._data[instance]) {
-			Drop._data[instance]._anchor.left--;
-			Drop.tick(instance, Drop._data[instance]._anchor);
-		}
-	}, 10);
-	Meteor.setTimeout(() => { Meteor.setInterval(() => {
-		Drop.hide(instance);
-	}, 2000); }, 1000);
-});
 
-// right	
-Template['/drop'].onRendered(function() {
-	var instance;
-	Meteor.setInterval(() => {
-		var anchor = Drop.coordinates(this.$('#interval')[0])
-		anchor.left = anchor.left + (anchor.width / 2) + 100;
-		anchor.top = anchor.top + (anchor.height / 2);
-		anchor.width = 0;
-		anchor.height = 0;
-		instance = Drop.show({ template: 'arrowed', _anchor: anchor, position: positions[lodash.random(0, 3)] });
-	}, 2000);
-	Meteor.setInterval(() => {
-		if (Drop._data[instance]) {
-			Drop._data[instance]._anchor.left++;
-			Drop.tick(instance, Drop._data[instance]._anchor);
-		}
-	}, 20);
-	Meteor.setTimeout(() => { Meteor.setInterval(() => {
-		Drop.hide(instance);
-	}, 2000); }, 1000);
+Template['/drop'].onDestroyed(function() {
+	if (instance) Drop.hide(instance);
+	Meteor.clearInterval(showInterval);
+	Meteor.clearInterval(hideInterval);
 });
 
 Template.registerHelper('lodash', function() { return lodash; });

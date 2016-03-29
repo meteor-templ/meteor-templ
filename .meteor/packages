@@ -23,7 +23,7 @@ huttonr:bootstrap3
 iron:router
 less
 mizzao:jquery-ui
-templ:drop
+templ:drop@0.2.2
 aldeed:console-helpers
 simple:highlight.js
 markdown

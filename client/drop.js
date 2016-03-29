@@ -1,48 +1,116 @@
-Router.route('/', function() {
-    this.render('/');
-});
+var Data = DropData = new Mongo.Collection(null);
+
+Data.attachSchema(new SimpleSchema({
+	trigger: {
+		type: String,
+		defaultValue: 'toggle',
+		allowedValues: ['toggle', 'tooltip', 'dropmenu', 'dropdown', 'popover']
+	},
+	template: {
+		type: String,
+		defaultValue: '/drop:template',
+		allowedValues: ['/drop:template', '/drop:nested', '/drop:content']
+	},
+	theme: {
+		type: String,
+		defaultValue: 'DropDefault',
+		allowedValues: ['DropDefault', 'DropBootstrap']
+	},
+	placement: {
+		type: String,
+		defaultValue: 'global',
+		allowedValues: ['global', 'dropLocalPlacement']
+	},
+	location: {
+		type: String,
+		defaultValue: 'outside',
+		allowedValues: ['outside', 'inside']
+	},
+	direction: {
+		type: String,
+		defaultValue: 'top',
+		allowedValues: ['top', 'right', 'left', 'bottom']
+	},
+	position: {
+		type: Number,
+		defaultValue: 0.5,
+		min: 0, max: 1,
+		decimal: true
+	},
+	alignment: {
+		type: Number,
+		defaultValue: 0.5,
+		min: 0, max: 1,
+		decimal: true
+	},
+	example: {
+		type: String,
+		defaultValue: 'template',
+		allowedValues: ['template', 'script'],
+		optional: true
+	}
+}));
+
+var d = Data.insert({});
+var drop, trigger;
 
 Router.route('/drop', function() {
-    this.render('/drop');
+	this.render('/drop', { data: { data: Data.findOne(d) }});
 });
 
-Template['/drop'].onRendered(function() {
-	var svg = d3.select(this.$('svg')[0]);
-	
-	var anchor = svg
-		.append('circle')
-		.attr('r', 50)
-		.attr('fill', '#000')
-		.attr('cx', 50)
-		.attr('data-drop-anchor', Random.id())
-		.attr('cy', 50)[0][0]
-	
-	Drop.init({ template: 'arrowed', trigger: 'tooltip', position: 'r', _anchor: anchor });
-	Drop.init({ template: 'arrowed', trigger: 'tooltip', position: 'l', _anchor: anchor });
+Template['/drop:zone'].events({
+	'change input, change select, change .nouislider':function(event, tempalte) {
+		var values = AutoForm.getFormValues('DropZoneControl');
+		Data.update(d, values.updateDoc);
+	}
 });
 
-var positions = ['t','r','b','l'];
-	
-var showInterval;
-var hideInterval;
-var instance;
-
-Template['/drop'].onRendered(function() {
-	var anchor = this.$('#interval')[0];
-	// var anchor = Drop.coordinates(this.$('#interval')[0]); // Equal
-	Meteor.setInterval(() => {
-		instance = Drop.show({ template: 'arrowed', _anchor: anchor, position: positions[lodash.random(0, 3)] });
-	}, 2000);
-	Meteor.setTimeout(() => { Meteor.setInterval(() => {
-		Drop.hide(instance);
-	}, 2000); }, 1000);
+Template['/drop:zone'].helpers({
+	Data: function() { return Data; }
 });
 
-
-Template['/drop'].onDestroyed(function() {
-	if (instance) Drop.hide(instance);
-	Meteor.clearInterval(showInterval);
-	Meteor.clearInterval(hideInterval);
+Template['/drop:zone'].events({
+	'click [data-templ-drop-action]': function(event, template) {
+		trigger.anchor = true;
+		drop[$(event.currentTarget).data('templ-drop-action')]();
+	}
 });
 
-Template.registerHelper('lodash', function() { return lodash; });
+Template['/drop:zone'].onRendered(function() {
+	this.$('.anchor').draggable({
+		cancel: false,
+		containment: ".anchors"
+	});
+	this.$('.anchors').resizable({
+		maxHeight: 400,
+		minHeight: 70,
+		handles: 's',
+		resize: () => {
+			if (this.$('.anchor').height() + this.$('.anchor').offset().top > this.$('.anchors').height() + this.$('.anchors').offset().top) {
+				this.$('.anchor').css({ top: this.$('.anchors').height() - this.$('.anchor').height() });
+			}
+		}
+	});
+	drop = new Drop(Data.findOne(d));
+	drop.tick({ anchor: this.$('.anchor')[0] });
+	if (drop.data.template == '/drop:template') {
+		drop.data.content = Template['/drop:handy'];
+	}
+	drop.watchWindow().watchDrag();
+	drop.show();
+	trigger = drop.trigger(drop.data.trigger);
+	Data.find({ _id: d }).observe({
+		changed: function(data) {
+			if (data.template == '/drop:template')
+				data.content = Template['/drop:handy'];
+			else data.content = undefined;
+			drop.tick(data);
+			trigger.destroy();
+			trigger = drop.trigger(data.trigger);
+		}
+	});
+});
+
+Template['/drop:zone'].onDestroyed(function() {
+	drop.hide();
+});

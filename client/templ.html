@@ -1,11 +1,9 @@
 <head>
   <title>drop</title>
-  <link href='https://fonts.googleapis.com/css?family=Capriola' rel='stylesheet' type='text/css'>
+  <link href='https://fonts.googleapis.com/css?family=Nunito' rel='stylesheet' type='text/css'>
 </head>
 
 <body>
-  {{> Drops}}
-  
   <script>
     (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
     (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
@@ -50,22 +48,46 @@
 		{{> navbar class="navbar-default navbar-fixed-top hidden-xs"}}
 		{{> navbar class="navbar-default visible-xs-block"}}
     <div class="container text-center">
-        <img src="/templ.png" class="center-block img-responsive">
-        <div class="text-center" style="position: relative;">
-          <h1>TEMPL</h1>
-          <p>Handy reactive templates for different purposes.</p>
-          <h3>Primary</h3>
-          <a class="btn btn-default" style="margin: 10px;" href="/drop">
-              <i class="fa fa-fw fa-2x fa-comment"></i><br>Drop
-          </a>
-          <a class="btn btn-default disabled" style="margin: 10px;" href="/tree">
-              <i class="fa fa-fw fa-2x fa-tree"></i><br>Tree
-          </a>
-          <h3>Secondary</h3>
-          <a class="btn btn-default" style="margin: 10px;" href="https://github.com/meteor-templ/dimentum">
-              <i class="fa fa-fw fa-2x fa-location-arrow"></i><br>Dimentum
-          </a>
+        <img src="/templ.png" class="center-block img-responsive" style="opacity: 0.9;">
+        <h1>Templ</h1>
+        <p>Handy reactive templates for different purposes.</p>
+    </div>
+    <br>
+    <div class="container text-left">
+      <div class="col-md-8 col-md-offset-2 col-lg-6 col-lg-offset-3">
+        <div class="well well-sm">
+          <h4>
+            <i class="fa fa-fw fa-square"></i> Drop <small><kbd>meteor install templ:drop</kbd>@0.2.0</small>
+          </h4>
+          <p>
+            <a href="/drop">Examples</a> - <a href="https://github.com/meteor-templ/drop">GitHub</a> - <a href="atmospherejs.com/templ/drop">Atmosphere.js</a>
+          </p>
+          <p>Realy fully customizable, and reactive drops, dropdowns, tooltips and dropmenus for Meteor.</p>
         </div>
+        <div class="well well-sm">
+          <h4>
+            <i class="fa fa-fw fa-tree"></i> Trees
+            <small class="text-muted">soon...</small>
+          </h4>
+          <p>Controlled trees templates.</p>
+        </div>
+        <div class="well well-sm">
+          <h4>
+            <i class="fa fa-fw fa-th-large"></i> Spaces
+            <small class="text-muted">soon...</small>
+          </h4>
+          <p>Nested reactive visually editable templates for Meteor.</p>
+        </div>
+        <div class="well well-sm">
+          <h4>
+            <i class="fa fa-fw fa-location-arrow"></i> Dimentum <small><kbd>meteor install templ:dimentum</kbd> @0.0.3</small>
+          </h4>
+          <p>
+            <a href="https://github.com/meteor-templ/dimentum">GitHub</a> - <a href="atmospherejs.com/templ/dimentum">Atmosphere.js</a>
+          </p>
+          <p>Directed momentum animation.</p>
+        </div>
+      </div>
     </div>
     <div class="container text-center">
         With love <i class="glyphicon glyphicon-heart text-danger"></i> from Russia

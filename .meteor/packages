@@ -12,7 +12,6 @@ session                 # Client-side reactive dictionary for your app
 jquery                  # Helpful client-side library
 tracker                 # Meteor's client-side reactive programming library
 
-standard-minifiers      # JS/CSS minifiers run for production mode
 es5-shim                # ECMAScript 5 compatibility for older browsers.
 ecmascript              # Enable ECMAScript2015+ syntax in app code
 
@@ -33,3 +32,9 @@ shuttler:selection
 aldeed:collection2
 d3js:d3
 random
+raix:handlebar-helpers
+aldeed:autoform
+elevatedevdesign:autoform-nouislider
+aldeed:autoform-bs-button-group-input
+standard-minifier-css
+standard-minifier-js

@@ -11,7 +11,7 @@
 //
 //## Gray and brand colors for use across Bootstrap.
 
-@gray-base:              #000;
+@gray-base:              lighten(#000, 15%);
 @gray-darker:            lighten(@gray-base, 13.5%); // #222
 @gray-dark:              lighten(@gray-base, 20%);   // #333
 @gray:                   lighten(@gray-base, 33.5%); // #555
@@ -35,9 +35,9 @@
 @text-color:            @gray-base;
 
 //** Global textual link color.
-@link-color:            #DE4F4F;
+@link-color:            lighten(black, 5%);
 //** Link hover color set via `darken()` function.
-@link-hover-color:      darken(#DE4F4F, 15%);
+@link-hover-color:      lighten(black, 0%);
 //** Link hover decoration.
 @link-hover-decoration: underline;
 
@@ -46,7 +46,7 @@
 //
 //## Font, line-height, and color for body text, headings, and more.
 
-@font-family-sans-serif:  'Capriola', Helvetica, Arial, sans-serif;
+@font-family-sans-serif:  'Nunito', Helvetica, Arial, sans-serif;
 @font-family-serif:       Georgia, "Times New Roman", Times, serif;
 //** Default monospace fonts for `<code>`, `<kbd>`, and `<pre>`.
 @font-family-monospace:   Menlo, Monaco, Consolas, "Courier New", monospace;
@@ -148,9 +148,9 @@
 
 @btn-font-weight:                normal;
 
-@btn-default-color:              black;
-@btn-default-bg:                 transparent;
-@btn-default-border:             black;
+@btn-default-color:              @gray-base;
+@btn-default-bg:                 #fff;
+@btn-default-border:             transparent;
 
 @btn-primary-color:              #fff;
 @btn-primary-bg:                 transparent;
@@ -764,8 +764,8 @@
 //
 //##
 
-@well-bg:                     #f5f5f5;
-@well-border:                 darken(@well-bg, 7%);
+@well-bg:                     #fff;
+@well-border:                 fade(black, 50%);
 
 
 //== Badges
@@ -837,7 +837,7 @@
 @code-bg:                     #f9f2f4;
 
 @kbd-color:                   #fff;
-@kbd-bg:                      #333;
+@kbd-bg:                      #000;
 
 @pre-bg:                      #f5f5f5;
 @pre-color:                   @gray-dark;

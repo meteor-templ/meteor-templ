@@ -46,7 +46,7 @@ h1, h2, h3, h4, h5, h6, p {
 	.box-shadow(~"0 1px 5px 0 gray");
 	.transition(~"all 0.5s");
 	background-color: white;
-	&:hover {
+	&:hover:not(.active) {
 		.box-shadow(~"0 2px 9px 0 gray");
 		background-color: darken(white, 5%);
 	}

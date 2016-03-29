@@ -47,10 +47,11 @@ h1, h2, h3, h4, h5, h6, p {
 	.transition(~"all 0.5s");
 	background-color: white;
 	&:hover {
+		.box-shadow(~"0 2px 9px 0 gray");
 		background-color: darken(white, 5%);
 	}
 	&:active {
-		.box-shadow(~"0 2px 9px 0 gray");
+		.box-shadow(~"0 3px 12px 0 gray");
 		background-color: white;
 	}
 }

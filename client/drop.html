@@ -8,7 +8,7 @@
     <div class="container text-center">
         <i class="fa fa-5x fa-fw fa-square"></i>
         <h1>templ:drop</h1>
-        <p><small><kbd>meteor install templ:drop</kbd>@0.2.5</small></p>
+        <p><small><kbd>meteor install templ:drop</kbd>@0.3.0</small></p>
         <p><a href="https://github.com/meteor-templ/drop">GitHub</a> - <a href="atmospherejs.com/templ/drop">Atmosphere.js</a></p>
         <p>Realy fully customizable, and reactive drops, dropdowns, tooltips and dropmenus for Meteor.</p>
     </div>
@@ -72,13 +72,13 @@ trigger = drop.trigger(drop.data.trigger);
 {{/if}}
 ```html
 {{#if lodash.isEqual example "template"}}
-  {{lodash.toString "{{#Drop trigger='"}}{{trigger}}{{lodash.toString "' template='"}}{{template}}{{lodash.toString "' theme='"}}{{theme}}{{lodash.toString "' placement='"}}{{placement}}{{lodash.toString "' location='"}}{{location}}{{lodash.toString "' direction='"}}{{direction}}{{lodash.toString "' position="}}{{position}}{{lodash.toString " alignment="}}{{alignment}}{{lodash.toString "}}"}}
-    <button class="anchor">
-      anchor
-    </button>{{#if lodash.isEqual template "/drop:content"}}
-  {{lodash.toString "{{else}}"}}
-    123456{{/if}}
-  {{lodash.toString "{{/Drop}}"}}
+{{lodash.toString "{{#Drop trigger='"}}{{trigger}}{{lodash.toString "' template='"}}{{template}}{{lodash.toString "' theme='"}}{{theme}}{{lodash.toString "' placement='"}}{{placement}}{{lodash.toString "' location='"}}{{location}}{{lodash.toString "' direction='"}}{{direction}}{{lodash.toString "' position="}}{{position}}{{lodash.toString " alignment="}}{{alignment}}{{lodash.toString "}}"}}
+  <button class="anchor">
+    anchor
+  </button>{{#if lodash.isEqual template "/drop:content"}}
+{{lodash.toString "{{else}}"}}
+  123456{{/if}}
+{{lodash.toString "{{/Drop}}"}}
 {{else}}
 <button class="anchor">
   anchor
@@ -86,6 +86,7 @@ trigger = drop.trigger(drop.data.trigger);
 {{/if}}
 {{#if lodash.isEqual placement "dropLocalPlacement"}}{{lodash.toString "{{> Drops placement='dropLocalPlacement'}}"}}{{/if}}
 ```
+{{#if lodash.isEqual template "/drop:template"}}
 ```html
 {{lodash.unescape "&lt;template name=&#39;/drop:template&#39;&gt;"}}
   <div style="padding: 5px;">
@@ -93,27 +94,31 @@ trigger = drop.trigger(drop.data.trigger);
   </div>
 {{lodash.unescape "&lt;/template&gt;"}}
 ```
+{{/if}}
+{{#if lodash.isEqual template "/drop:nested"}}
 ```html
 {{lodash.unescape "&lt;template name=&#39;/drop:nested&#39;&gt;"}}
   <div style="padding: 5px;">
-    {{lodash.toString "{{#Drop trigger='toggle' template='/drop:template' theme='DropDefault' placement='global' location='outside' direction='top' position='0.5' alignment='0.5' parent=this}}"}}
+    {{lodash.toString "{{#Drop trigger='toggle' template='/drop:nested' theme='"}}theme{{lodash.toString "' placement='global' location='outside' direction='top' position='0.5' alignment='0.5' parent=this}}"}}
       <div class="btn btn-default" style="margin: 2px;">toggle</div>
     {{lodash.toString "{{/Drop}}"}}
-    {{lodash.toString "{{#Drop trigger='tooltip' template='/drop:template' theme='DropDefault' placement='global' location='outside' direction='top' position='0.5' alignment='0.5' parent=this}}"}}
+    {{lodash.toString "{{#Drop trigger='tooltip' template='/drop:nested' theme='"}}theme{{lodash.toString "' placement='global' location='outside' direction='top' position='0.5' alignment='0.5' parent=this}}"}}
       <div class="btn btn-default" style="margin: 2px;">tooltip</div>
     {{lodash.toString "{{/Drop}}"}}
-    {{lodash.toString "{{#Drop trigger='dropmenu' template='/drop:template' theme='DropDefault' placement='global' location='outside' direction='top' position='0.5' alignment='0.5' parent=this}}"}}
+    {{lodash.toString "{{#Drop trigger='dropmenu' template='/drop:nested' theme='"}}theme{{lodash.toString "' placement='global' location='outside' direction='top' position='0.5' alignment='0.5' parent=this}}"}}
       <div class="btn btn-default" style="margin: 2px;">dropmenu</div>
     {{lodash.toString "{{/Drop}}"}}
-    {{lodash.toString "{{#Drop trigger='dropdown' template='/drop:template' theme='DropDefault' placement='global' location='outside' direction='top' position='0.5' alignment='0.5' parent=this}}"}}
+    {{lodash.toString "{{#Drop trigger='dropdown' template='/drop:nested' theme='"}}theme{{lodash.toString "' placement='global' location='outside' direction='top' position='0.5' alignment='0.5' parent=this}}"}}
       <div class="btn btn-default" style="margin: 2px;">dropdown</div>
     {{lodash.toString "{{/Drop}}"}}
-    {{lodash.toString "{{#Drop trigger='popover' template='/drop:template' theme='DropDefault' placement='global' location='outside' direction='top' position='0.5' alignment='0.5' parent=this}}"}}
+    {{lodash.toString "{{#Drop trigger='popover' template='/drop:nested' theme='"}}theme{{lodash.toString "' placement='global' location='outside' direction='top' position='0.5' alignment='0.5' parent=this}}"}}
       <div class="btn btn-default" style="margin: 2px;">popover</div>
     {{lodash.toString "{{/Drop}}"}}
   </div>
 {{lodash.unescape "&lt;/template&gt;"}}
 ```
+{{/if}}
+{{#if lodash.isEqual template "/drop:content"}}
 ```html
 {{lodash.unescape "&lt;template name=&#39;/drop:content&#39;&gt;"}}
   <div style="padding: 5px;">
@@ -121,6 +126,27 @@ trigger = drop.trigger(drop.data.trigger);
   </div>
 {{lodash.unescape "&lt;/template&gt;"}}
 ```
+{{/if}}
+{{#if lodash.isEqual template "/drop:dropmenu"}}
+```html
+{{lodash.unescape "&lt;template name=&#39;/drop:dropmenu&#39;&gt;"}}
+  <div class="list-group">
+    {{lodash.toString "{{#Drop trigger='dropmenu' template='/drop:dropmenu' theme='"}}theme{{lodash.toString "' placement='global' location='outside' direction='right' arrow=false position='0.5' alignment='0.5' parent=this}}"}}
+      <a href='#' class="list-group-item">dropmenu</a>
+    {{lodash.toString "{{/Drop}}"}}
+    {{lodash.toString "{{#Drop trigger='dropmenu' template='/drop:dropmenu' theme='"}}theme{{lodash.toString "' placement='global' location='outside' direction='right' arrow=false position='0.5' alignment='0.5' parent=this}}"}}
+      <a href='#' class="list-group-item">dropmenu</a>
+    {{lodash.toString "{{/Drop}}"}}
+    {{lodash.toString "{{#Drop trigger='dropmenu' template='/drop:dropmenu' theme='"}}theme{{lodash.toString "' placement='global' location='outside' direction='right' arrow=false position='0.5' alignment='0.5' parent=this}}"}}
+      <a href='#' class="list-group-item">dropmenu</a>
+    {{lodash.toString "{{/Drop}}"}}
+    {{lodash.toString "{{#Drop trigger='dropmenu' template='/drop:dropmenu' theme='"}}theme{{lodash.toString "' placement='global' location='outside' direction='right' arrow=false position='0.5' alignment='0.5' parent=this}}"}}
+      <a href='#' class="list-group-item">dropmenu</a>
+    {{lodash.toString "{{/Drop}}"}}
+  </div>
+{{lodash.unescape "&lt;/template&gt;"}}
+```
+{{/if}}
 {{/markdown}}
   </div>
 </template>
@@ -139,20 +165,37 @@ trigger = drop.trigger(drop.data.trigger);
 
 <template name="/drop:nested">
   <div style="padding: 5px;">
-    {{#Drop trigger='toggle' template='/drop:template' theme='DropDefault' placement='global' location='outside' direction='top' position='0.5' alignment='0.5' parent=this}}
+    {{#Drop trigger='toggle' template='/drop:nested' theme=theme placement='global' location='outside' direction='top' position='0.5' alignment='0.5' parent=this}}
       <div class="btn btn-default" style="margin: 2px;">toggle</div>
     {{/Drop}}
-    {{#Drop trigger='tooltip' template='/drop:template' theme='DropDefault' placement='global' location='outside' direction='top' position='0.5' alignment='0.5' parent=this}}
+    {{#Drop trigger='tooltip' template='/drop:nested' theme=theme placement='global' location='outside' direction='top' position='0.5' alignment='0.5' parent=this}}
       <div class="btn btn-default" style="margin: 2px;">tooltip</div>
     {{/Drop}}
-    {{#Drop trigger='dropmenu' template='/drop:template' theme='DropDefault' placement='global' location='outside' direction='top' position='0.5' alignment='0.5' parent=this}}
+    {{#Drop trigger='dropmenu' template='/drop:nested' theme=theme placement='global' location='outside' direction='top' position='0.5' alignment='0.5' parent=this}}
       <div class="btn btn-default" style="margin: 2px;">dropmenu</div>
     {{/Drop}}
-    {{#Drop trigger='dropdown' template='/drop:template' theme='DropDefault' placement='global' location='outside' direction='top' position='0.5' alignment='0.5' parent=this}}
+    {{#Drop trigger='dropdown' template='/drop:nested' theme=theme placement='global' location='outside' direction='top' position='0.5' alignment='0.5' parent=this}}
       <div class="btn btn-default" style="margin: 2px;">dropdown</div>
     {{/Drop}}
-    {{#Drop trigger='popover' template='/drop:template' theme='DropDefault' placement='global' location='outside' direction='top' position='0.5' alignment='0.5' parent=this}}
+    {{#Drop trigger='popover' template='/drop:nested' theme=theme placement='global' location='outside' direction='top' position='0.5' alignment='0.5' parent=this}}
       <div class="btn btn-default" style="margin: 2px;">popover</div>
+    {{/Drop}}
+  </div>
+</template>
+
+<template name="/drop:dropmenu">
+  <div class="list-group">
+    {{#Drop trigger='dropmenu' template='/drop:dropmenu' theme=theme placement='global' location='outside' direction='right' arrow=false position='0.5' alignment='0.5' parent=this}}
+      <a href='#' class="list-group-item">dropmenu</a>
+    {{/Drop}}
+    {{#Drop trigger='dropmenu' template='/drop:dropmenu' theme=theme placement='global' location='outside' direction='right' arrow=false position='0.5' alignment='0.5' parent=this}}
+      <a href='#' class="list-group-item">dropmenu</a>
+    {{/Drop}}
+    {{#Drop trigger='dropmenu' template='/drop:dropmenu' theme=theme placement='global' location='outside' direction='right' arrow=false position='0.5' alignment='0.5' parent=this}}
+      <a href='#' class="list-group-item">dropmenu</a>
+    {{/Drop}}
+    {{#Drop trigger='dropmenu' template='/drop:dropmenu' theme=theme placement='global' location='outside' direction='right' arrow=false position='0.5' alignment='0.5' parent=this}}
+      <a href='#' class="list-group-item">dropmenu</a>
     {{/Drop}}
   </div>
 </template>

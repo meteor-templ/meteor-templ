@@ -9,7 +9,7 @@ Data.attachSchema(new SimpleSchema({
 	template: {
 		type: String,
 		defaultValue: '/drop:template',
-		allowedValues: ['/drop:template', '/drop:nested', '/drop:content']
+		allowedValues: ['/drop:template', '/drop:nested', '/drop:content', '/drop:dropmenu']
 	},
 	theme: {
 		type: String,

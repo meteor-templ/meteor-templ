@@ -111,8 +111,8 @@ spacebars-compiler@1.0.9
 standard-minifier-css@1.0.4
 standard-minifier-js@1.0.4
 stevezhu:lodash@4.6.1
-templ:dimentum@0.1.0
-templ:drop@0.3.1
+templ:dimentum@0.1.2
+templ:drop@0.3.3
 templating@1.1.7
 templating-tools@1.0.2
 tracker@1.0.11

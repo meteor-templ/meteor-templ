@@ -5,58 +5,58 @@
 		{{> navbar class="navbar-default opacity-0"}}
 		{{> navbar class="navbar-default visible-xs-block"}}
 		
-    <div class="container text-center">
-        <i class="fa fa-5x fa-fw fa-square"></i>
-        <h1>templ:drop</h1>
-        <p><small><kbd>meteor install templ:drop</kbd>@0.3.3</small></p>
-        <p><a href="https://github.com/meteor-templ/drop">GitHub</a> - <a href="atmospherejs.com/templ/drop">Atmosphere.js</a></p>
-        <p>Realy fully customizable, and reactive drops, dropdowns, tooltips and dropmenus for Meteor.</p>
-    </div>
-    
-    <br>
-    
-    {{> Template.dynamic template='/drop:zone' data=data}}
-  </div>
+		<div class="container text-center">
+				<i class="fa fa-5x fa-fw fa-square"></i>
+				<h1>templ:drop</h1>
+				<p><small><kbd>meteor install templ:drop</kbd>@0.3.3</small></p>
+				<p><a href="https://github.com/meteor-templ/drop">GitHub</a> - <a href="atmospherejs.com/templ/drop">Atmosphere.js</a></p>
+				<p>Realy fully customizable, and reactive drops, dropdowns, tooltips and dropmenus for Meteor.</p>
+		</div>
+		
+		<br>
+		
+		{{> Template.dynamic template='/drop:zone' data=data}}
+	</div>
 </template>
 
 <template name="/drop:zone">
-  <div class="container">
-    <div class="col-md-10 col-md-offset-1 col-lg-8 col-lg-offset-2">
-      {{#autoForm collection=Data id="DropZoneControl" type="method"}}
-        <div class="row">
-          <div class="col-xs-6 col-sm-4">{{> afQuickField class='form-control' name='trigger' options="allowed" firstOption=false value=trigger}}</div>
-          <div class="col-xs-6 col-sm-4">{{> afQuickField class='form-control' name='template' options="allowed" firstOption=false value=template}}</div>
-          <div class="col-xs-6 col-sm-4">{{> afQuickField class='form-control' name='theme' options="allowed" firstOption=false value=theme}}</div>
-          <div class="col-xs-6 col-sm-6">{{> afQuickField class='form-control' name='placement' options="allowed" firstOption=false value=placement}}</div>
-          <div class="col-xs-6 col-sm-6">{{> afQuickField class='form-control' name='location' options="allowed" firstOption=false value=location}}</div>
-          <div class="col-xs-6 col-sm-4">{{> afQuickField class='form-control' name='direction' options="allowed" firstOption=false value=direction}}</div>
-          <div class="col-xs-6 col-sm-4">{{> afQuickField type="noUiSlider" min=0 max=1 step=0.05 name='position' value=position}}</div>
-          <div class="col-xs-6 col-sm-4">{{> afQuickField type="noUiSlider" min=0 max=1 step=0.05 name='alignment' value=alignment}}</div>
-        </div>
-        <div class="row">
-          <div class="col-xs-3">
-            <button type="button" class="btn btn-default btn-block" data-templ-drop-action="show">Show</button>
-          </div>
-          <div class="col-xs-3">
-            <button type="button" class="btn btn-default btn-block" data-templ-drop-action="hide">Hide</button>
-          </div>
-          <div class="col-xs-6">
-            <div class="pull-right">
-                {{> afQuickField class='form-control' type='select-radio' template='buttonGroup' name='example' value=example options="allowed"}}
-            </div>
-          </div>
-        </div>
-      {{/autoForm}}
-    </div>
-  </div>
-  <br>
-  <div class="well text-center anchors">
-    <button class="anchor">
-      anchor
-    </button>
-    {{> Drops placement="dropLocalPlacement"}}
-  </div>
-  <div class="container">
+	<div class="container">
+		<div class="col-md-10 col-md-offset-1 col-lg-8 col-lg-offset-2">
+			{{#autoForm collection=Data id="DropZoneControl" type="method"}}
+				<div class="row">
+					<div class="col-xs-6 col-sm-4">{{> afQuickField class='form-control' name='trigger' options="allowed" firstOption=false value=trigger}}</div>
+					<div class="col-xs-6 col-sm-4">{{> afQuickField class='form-control' name='template' options="allowed" firstOption=false value=template}}</div>
+					<div class="col-xs-6 col-sm-4">{{> afQuickField class='form-control' name='theme' options="allowed" firstOption=false value=theme}}</div>
+					<div class="col-xs-6 col-sm-6">{{> afQuickField class='form-control' name='placement' options="allowed" firstOption=false value=placement}}</div>
+					<div class="col-xs-6 col-sm-6">{{> afQuickField class='form-control' name='location' options="allowed" firstOption=false value=location}}</div>
+					<div class="col-xs-6 col-sm-4">{{> afQuickField class='form-control' name='direction' options="allowed" firstOption=false value=direction}}</div>
+					<div class="col-xs-6 col-sm-4">{{> afQuickField type="noUiSlider" min=0 max=1 step=0.05 name='position' value=position}}</div>
+					<div class="col-xs-6 col-sm-4">{{> afQuickField type="noUiSlider" min=0 max=1 step=0.05 name='alignment' value=alignment}}</div>
+				</div>
+				<div class="row">
+					<div class="col-xs-3">
+						<button type="button" class="btn btn-default btn-block" data-templ-drop-action="show">Show</button>
+					</div>
+					<div class="col-xs-3">
+						<button type="button" class="btn btn-default btn-block" data-templ-drop-action="hide">Hide</button>
+					</div>
+					<div class="col-xs-6">
+						<div class="pull-right">
+								{{> afQuickField class='form-control' type='select-radio' template='buttonGroup' name='example' value=example options="allowed"}}
+						</div>
+					</div>
+				</div>
+			{{/autoForm}}
+		</div>
+	</div>
+	<br>
+	<div class="well text-center anchors">
+		<button class="anchor">
+			anchor
+		</button>
+		{{> Drops placement="dropLocalPlacement"}}
+	</div>
+	<div class="container">
 {{#markdown}}
 {{#if lodash.isEqual example "script"}}
 ```js
@@ -73,15 +73,15 @@ trigger = drop.trigger(drop.data.trigger);
 ```html
 {{#if lodash.isEqual example "template"}}
 {{lodash.toString "{{#Drop trigger='"}}{{trigger}}{{lodash.toString "' template='"}}{{template}}{{lodash.toString "' theme='"}}{{theme}}{{lodash.toString "' placement='"}}{{placement}}{{lodash.toString "' location='"}}{{location}}{{lodash.toString "' direction='"}}{{direction}}{{lodash.toString "' position="}}{{position}}{{lodash.toString " alignment="}}{{alignment}}{{lodash.toString "}}"}}
-  <button class="anchor">
-    anchor
-  </button>{{#if lodash.isEqual template "/drop:content"}}
+	<button class="anchor">
+		anchor
+	</button>{{#if lodash.isEqual template "/drop:content"}}
 {{lodash.toString "{{else}}"}}
-  123456{{/if}}
+	123456{{/if}}
 {{lodash.toString "{{/Drop}}"}}
 {{else}}
 <button class="anchor">
-  anchor
+	anchor
 </button>
 {{/if}}
 {{#if lodash.isEqual placement "dropLocalPlacement"}}{{lodash.toString "{{> Drops placement='dropLocalPlacement'}}"}}{{/if}}
@@ -89,115 +89,115 @@ trigger = drop.trigger(drop.data.trigger);
 {{#if lodash.isEqual template "/drop:template"}}
 ```html
 {{lodash.unescape "&lt;template name=&#39;/drop:template&#39;&gt;"}}
-  <div style="padding: 5px;">
-    {{lodash.toString '{{direction}}'}}
-  </div>
+	<div style="padding: 5px;">
+		{{lodash.toString '{{direction}}'}}
+	</div>
 {{lodash.unescape "&lt;/template&gt;"}}
 ```
 {{/if}}
 {{#if lodash.isEqual template "/drop:nested"}}
 ```html
 {{lodash.unescape "&lt;template name=&#39;/drop:nested&#39;&gt;"}}
-  <div style="padding: 5px;">
-    {{lodash.toString "{{#Drop trigger='toggle' template='/drop:nested' theme='"}}theme{{lodash.toString "' placement='global' location='outside' direction='top' position='0.5' alignment='0.5' parent=this}}"}}
-      <div class="btn btn-default" style="margin: 2px;">toggle</div>
-    {{lodash.toString "{{/Drop}}"}}
-    {{lodash.toString "{{#Drop trigger='tooltip' template='/drop:nested' theme='"}}theme{{lodash.toString "' placement='global' location='outside' direction='top' position='0.5' alignment='0.5' parent=this}}"}}
-      <div class="btn btn-default" style="margin: 2px;">tooltip</div>
-    {{lodash.toString "{{/Drop}}"}}
-    {{lodash.toString "{{#Drop trigger='dropmenu' template='/drop:nested' theme='"}}theme{{lodash.toString "' placement='global' location='outside' direction='top' position='0.5' alignment='0.5' parent=this}}"}}
-      <div class="btn btn-default" style="margin: 2px;">dropmenu</div>
-    {{lodash.toString "{{/Drop}}"}}
-    {{lodash.toString "{{#Drop trigger='dropdown' template='/drop:nested' theme='"}}theme{{lodash.toString "' placement='global' location='outside' direction='top' position='0.5' alignment='0.5' parent=this}}"}}
-      <div class="btn btn-default" style="margin: 2px;">dropdown</div>
-    {{lodash.toString "{{/Drop}}"}}
-    {{lodash.toString "{{#Drop trigger='popover' template='/drop:nested' theme='"}}theme{{lodash.toString "' placement='global' location='outside' direction='top' position='0.5' alignment='0.5' parent=this}}"}}
-      <div class="btn btn-default" style="margin: 2px;">popover</div>
-    {{lodash.toString "{{/Drop}}"}}
-  </div>
+	<div style="padding: 5px;">
+		{{lodash.toString "{{#Drop trigger='toggle' template='/drop:nested' theme='"}}{{theme}}{{lodash.toString "' placement='global' location='outside' direction='top' position='0.5' alignment='0.5' parent=this}}"}}
+			<div class="btn btn-default" style="margin: 2px;">toggle</div>
+		{{lodash.toString "{{/Drop}}"}}
+		{{lodash.toString "{{#Drop trigger='tooltip' template='/drop:nested' theme='"}}{{theme}}{{lodash.toString "' placement='global' location='outside' direction='top' position='0.5' alignment='0.5' parent=this}}"}}
+			<div class="btn btn-default" style="margin: 2px;">tooltip</div>
+		{{lodash.toString "{{/Drop}}"}}
+		{{lodash.toString "{{#Drop trigger='dropmenu' template='/drop:nested' theme='"}}{{theme}}{{lodash.toString "' placement='global' location='outside' direction='top' position='0.5' alignment='0.5' parent=this}}"}}
+			<div class="btn btn-default" style="margin: 2px;">dropmenu</div>
+		{{lodash.toString "{{/Drop}}"}}
+		{{lodash.toString "{{#Drop trigger='dropdown' template='/drop:nested' theme='"}}{{theme}}{{lodash.toString "' placement='global' location='outside' direction='top' position='0.5' alignment='0.5' parent=this}}"}}
+			<div class="btn btn-default" style="margin: 2px;">dropdown</div>
+		{{lodash.toString "{{/Drop}}"}}
+		{{lodash.toString "{{#Drop trigger='popover' template='/drop:nested' theme='"}}{{theme}}{{lodash.toString "' placement='global' location='outside' direction='top' position='0.5' alignment='0.5' parent=this}}"}}
+			<div class="btn btn-default" style="margin: 2px;">popover</div>
+		{{lodash.toString "{{/Drop}}"}}
+	</div>
 {{lodash.unescape "&lt;/template&gt;"}}
 ```
 {{/if}}
 {{#if lodash.isEqual template "/drop:content"}}
 ```html
 {{lodash.unescape "&lt;template name=&#39;/drop:content&#39;&gt;"}}
-  <div style="padding: 5px;">
-    content: {{lodash.toString '{{#if content}}{{> content}}{{/if}}'}}
-  </div>
+	<div style="padding: 5px;">
+		content: {{lodash.toString '{{#if content}}{{> content}}{{/if}}'}}
+	</div>
 {{lodash.unescape "&lt;/template&gt;"}}
 ```
 {{/if}}
 {{#if lodash.isEqual template "/drop:dropmenu"}}
 ```html
 {{lodash.unescape "&lt;template name=&#39;/drop:dropmenu&#39;&gt;"}}
-  <div class="list-group">
-    {{lodash.toString "{{#Drop trigger='dropmenu' template='/drop:dropmenu' theme='"}}theme{{lodash.toString "' placement='global' location='outside' direction='right' arrow=false position='0.5' alignment='0.5' parent=this}}"}}
-      <a href='#' class="list-group-item">dropmenu</a>
-    {{lodash.toString "{{/Drop}}"}}
-    {{lodash.toString "{{#Drop trigger='dropmenu' template='/drop:dropmenu' theme='"}}theme{{lodash.toString "' placement='global' location='outside' direction='right' arrow=false position='0.5' alignment='0.5' parent=this}}"}}
-      <a href='#' class="list-group-item">dropmenu</a>
-    {{lodash.toString "{{/Drop}}"}}
-    {{lodash.toString "{{#Drop trigger='dropmenu' template='/drop:dropmenu' theme='"}}theme{{lodash.toString "' placement='global' location='outside' direction='right' arrow=false position='0.5' alignment='0.5' parent=this}}"}}
-      <a href='#' class="list-group-item">dropmenu</a>
-    {{lodash.toString "{{/Drop}}"}}
-    {{lodash.toString "{{#Drop trigger='dropmenu' template='/drop:dropmenu' theme='"}}theme{{lodash.toString "' placement='global' location='outside' direction='right' arrow=false position='0.5' alignment='0.5' parent=this}}"}}
-      <a href='#' class="list-group-item">dropmenu</a>
-    {{lodash.toString "{{/Drop}}"}}
-  </div>
+	<div class="list-group">
+		{{lodash.toString "{{#Drop trigger='dropmenu' template='/drop:dropmenu' theme='"}}{{theme}}{{lodash.toString "' placement='global' location='outside' direction='right' arrow=false position='0.5' alignment='0.5' parent=this}}"}}
+			<a href='#' class="list-group-item">dropmenu</a>
+		{{lodash.toString "{{/Drop}}"}}
+		{{lodash.toString "{{#Drop trigger='dropmenu' template='/drop:dropmenu' theme='"}}{{theme}}{{lodash.toString "' placement='global' location='outside' direction='right' arrow=false position='0.5' alignment='0.5' parent=this}}"}}
+			<a href='#' class="list-group-item">dropmenu</a>
+		{{lodash.toString "{{/Drop}}"}}
+		{{lodash.toString "{{#Drop trigger='dropmenu' template='/drop:dropmenu' theme='"}}{{theme}}{{lodash.toString "' placement='global' location='outside' direction='right' arrow=false position='0.5' alignment='0.5' parent=this}}"}}
+			<a href='#' class="list-group-item">dropmenu</a>
+		{{lodash.toString "{{/Drop}}"}}
+		{{lodash.toString "{{#Drop trigger='dropmenu' template='/drop:dropmenu' theme='"}}{{theme}}{{lodash.toString "' placement='global' location='outside' direction='right' arrow=false position='0.5' alignment='0.5' parent=this}}"}}
+			<a href='#' class="list-group-item">dropmenu</a>
+		{{lodash.toString "{{/Drop}}"}}
+	</div>
 {{lodash.unescape "&lt;/template&gt;"}}
 ```
 {{/if}}
 {{/markdown}}
-  </div>
+	</div>
 </template>
 
 <template name="/drop:template">
-  <div style="padding: 5px;">
-    {{direction}}
-  </div>
+	<div style="padding: 5px;">
+		{{direction}}
+	</div>
 </template>
 
 <template name="/drop:content">
-  <div style="padding: 5px;">
-    content: {{#if content}}{{> content}}{{/if}}
-  </div>
+	<div style="padding: 5px;">
+		content: {{#if content}}{{> content}}{{/if}}
+	</div>
 </template>
 
 <template name="/drop:nested">
-  <div style="padding: 5px;">
-    {{#Drop trigger='toggle' template='/drop:nested' theme=theme placement='global' location='outside' direction='top' position='0.5' alignment='0.5' parent=this}}
-      <div class="btn btn-default" style="margin: 2px;">toggle</div>
-    {{/Drop}}
-    {{#Drop trigger='tooltip' template='/drop:nested' theme=theme placement='global' location='outside' direction='top' position='0.5' alignment='0.5' parent=this}}
-      <div class="btn btn-default" style="margin: 2px;">tooltip</div>
-    {{/Drop}}
-    {{#Drop trigger='dropmenu' template='/drop:nested' theme=theme placement='global' location='outside' direction='top' position='0.5' alignment='0.5' parent=this}}
-      <div class="btn btn-default" style="margin: 2px;">dropmenu</div>
-    {{/Drop}}
-    {{#Drop trigger='dropdown' template='/drop:nested' theme=theme placement='global' location='outside' direction='top' position='0.5' alignment='0.5' parent=this}}
-      <div class="btn btn-default" style="margin: 2px;">dropdown</div>
-    {{/Drop}}
-    {{#Drop trigger='popover' template='/drop:nested' theme=theme placement='global' location='outside' direction='top' position='0.5' alignment='0.5' parent=this}}
-      <div class="btn btn-default" style="margin: 2px;">popover</div>
-    {{/Drop}}
-  </div>
+	<div style="padding: 5px;">
+		{{#Drop trigger='toggle' template='/drop:nested' theme=theme placement='global' location='outside' direction='top' position='0.5' alignment='0.5' parent=this}}
+			<div class="btn btn-default" style="margin: 2px;">toggle</div>
+		{{/Drop}}
+		{{#Drop trigger='tooltip' template='/drop:nested' theme=theme placement='global' location='outside' direction='top' position='0.5' alignment='0.5' parent=this}}
+			<div class="btn btn-default" style="margin: 2px;">tooltip</div>
+		{{/Drop}}
+		{{#Drop trigger='dropmenu' template='/drop:nested' theme=theme placement='global' location='outside' direction='top' position='0.5' alignment='0.5' parent=this}}
+			<div class="btn btn-default" style="margin: 2px;">dropmenu</div>
+		{{/Drop}}
+		{{#Drop trigger='dropdown' template='/drop:nested' theme=theme placement='global' location='outside' direction='top' position='0.5' alignment='0.5' parent=this}}
+			<div class="btn btn-default" style="margin: 2px;">dropdown</div>
+		{{/Drop}}
+		{{#Drop trigger='popover' template='/drop:nested' theme=theme placement='global' location='outside' direction='top' position='0.5' alignment='0.5' parent=this}}
+			<div class="btn btn-default" style="margin: 2px;">popover</div>
+		{{/Drop}}
+	</div>
 </template>
 
 <template name="/drop:dropmenu">
-  <div class="list-group">
-    {{#Drop trigger='dropmenu' template='/drop:dropmenu' theme=theme placement='global' location='outside' direction='right' arrow=false position='0.5' alignment='0.5' parent=this}}
-      <a href='#' class="list-group-item">dropmenu</a>
-    {{/Drop}}
-    {{#Drop trigger='dropmenu' template='/drop:dropmenu' theme=theme placement='global' location='outside' direction='right' arrow=false position='0.5' alignment='0.5' parent=this}}
-      <a href='#' class="list-group-item">dropmenu</a>
-    {{/Drop}}
-    {{#Drop trigger='dropmenu' template='/drop:dropmenu' theme=theme placement='global' location='outside' direction='right' arrow=false position='0.5' alignment='0.5' parent=this}}
-      <a href='#' class="list-group-item">dropmenu</a>
-    {{/Drop}}
-    {{#Drop trigger='dropmenu' template='/drop:dropmenu' theme=theme placement='global' location='outside' direction='right' arrow=false position='0.5' alignment='0.5' parent=this}}
-      <a href='#' class="list-group-item">dropmenu</a>
-    {{/Drop}}
-  </div>
+	<div class="list-group">
+		{{#Drop trigger='dropmenu' template='/drop:dropmenu' theme=theme placement='global' location='outside' direction='right' arrow=false position='0.5' alignment='0.5' parent=this}}
+			<a href='#' class="list-group-item">dropmenu</a>
+		{{/Drop}}
+		{{#Drop trigger='dropmenu' template='/drop:dropmenu' theme=theme placement='global' location='outside' direction='right' arrow=false position='0.5' alignment='0.5' parent=this}}
+			<a href='#' class="list-group-item">dropmenu</a>
+		{{/Drop}}
+		{{#Drop trigger='dropmenu' template='/drop:dropmenu' theme=theme placement='global' location='outside' direction='right' arrow=false position='0.5' alignment='0.5' parent=this}}
+			<a href='#' class="list-group-item">dropmenu</a>
+		{{/Drop}}
+		{{#Drop trigger='dropmenu' template='/drop:dropmenu' theme=theme placement='global' location='outside' direction='right' arrow=false position='0.5' alignment='0.5' parent=this}}
+			<a href='#' class="list-group-item">dropmenu</a>
+		{{/Drop}}
+	</div>
 </template>
 
 <template name="/drop:handy">123456</template>

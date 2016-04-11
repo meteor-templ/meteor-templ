@@ -1,0 +1,229 @@
+<template name="/tree">
+	<div class="background"></div>
+	<div class="document">
+		{{> navbar class="navbar-default navbar-fixed-top hidden-xs"}}
+		{{> navbar class="navbar-default opacity-0"}}
+		{{> navbar class="navbar-default visible-xs-block"}}
+		
+		<div class="container text-center">
+				<i class="fa fa-5x fa-fw fa-tree"></i>
+				<h1>templ:tree</h1>
+				<p><small><kbd>meteor install templ:tree</kbd>@0.0.0</small></p>
+				<p><a href="https://github.com/meteor-templ/tree">GitHub</a> - <a href="atmospherejs.com/templ/tree">Atmosphere.js</a></p>
+				<p>Easy generation of tree structures.</p>
+		</div>
+		
+		<br>
+			
+		<div class="container">
+			<div class="col-md-10 col-md-offset-1 col-lg-8 col-lg-offset-2">
+				{{#autoForm collection=Data id="TreeControl" type="method"}}
+					<div class="row">
+						<div class="col-xs-6">
+							{{> afQuickField class='form-control' type='select-radio' template='buttonGroup' name='flow' value=data.flow options="allowed"}}
+						</div>
+						<div class="col-xs-6">
+							{{> afQuickField class='form-control' type='select-radio' template='buttonGroup' name='theme' value=data.theme options="allowed"}}
+						</div>
+					</div>
+				{{/autoForm}}
+			</div>
+		</div>
+		
+		<br>
+		
+		<div class="container">
+			{{> TreeInsert}}
+			{{# Tree.Cursor cursor=roots}}
+				{{> Tree.State document=this States=States}}
+				{{#if $eq data.flow "two"}}
+					{{> Tree.State document=this States=CustomStates}}
+				{{/if}}
+				<div class="row">
+					<div class="well well-xs pull-left">
+						<div class="btn-group">
+							{{# Tree.Toggle state=(States.findState this)}}
+								<div class="btn btn-link"><i class="fa fa-fw fa-chevron-down"></i></div>
+							{{else}}
+								<div class="btn btn-link"><i class="fa fa-fw fa-chevron-right"></i></div>
+							{{/ Tree.Toggle}}
+							<div class="btn">{{this._id}}</div>
+							{{> TreeRemove document=this}}
+							{{> TreeInsert document=this type='contains'}}
+						</div>
+					</div>
+					{{#if $eq data.flow "two"}}
+						<div class="well-xs pull-left">
+							{{> TreeInsert document=this type='custom' class='text-success'}}
+							{{# Tree.Toggle state=(CustomStates.findState this)}}
+								<div class="btn btn-link"><i class="fa fa-fw fa-chevron-down text-success"></i></div>
+							{{else}}
+								<div class="btn btn-link"><i class="fa fa-fw fa-chevron-right text-success"></i></div>
+							{{/ Tree.Toggle}}
+						</div>
+					{{/if}}
+				</div>
+				<div style="padding-left: 50px;">
+					{{#if $eq data.flow "two"}}
+						<div class="row">
+							{{# Tree.Cursor state=(CustomStates.findState this) cursor=(this.cursor 'custom')}}
+								<div class="btn-group btn-group-xs">
+									<div class="btn text-success">{{this._id}}</div>
+									{{> TreeRemove document=this class='text-success'}}
+								</div>
+							{{/ Tree.Cursor}}
+						</div>
+					{{/if}}
+					{{> Tree.Cursor state=(States.findState this) cursor=(this.cursor 'contains') contentBlock=../contentBlock theme=../theme}}
+				</div>
+			{{else}}
+				{{#if $eq data.theme "animated"}}
+					{{#momentum plugin='fade'}}
+						{{#unless state.isClosed}}
+							{{#if cursor.count}}
+								{{#momentum plugin='fade'}}
+									{{#each cursor}}
+										<div>
+											{{#Templ.onCreated}}
+												{{> ../contentBlock}}
+											{{/Templ.onCreated}}
+										</div>
+									{{/each}}
+								{{/momentum}}
+							{{/if}}
+						{{/unless}}
+					{{/momentum}}
+				{{else}}
+					{{> Tree.Theme}}
+				{{/if}}
+			{{/ Tree.Cursor}}
+		</div>
+		
+		<br>
+		
+		<div class="container">
+{{#markdown}}
+```js
+TreeDocuments = new Mongo.Collection(null, { ref: '/tree:documents' });
+TreeDocuments.helpers({
+	cursor(type) { return TreeDocuments.find({ parent: this._id, type: type }); }
+});
+TreeDocuments.insert({});
+
+{{#if $eq data.flow "two"}}CustomStates = new Mongo.Collection(null, { ref: '/tree:states' });
+CustomStates.attachTemplTreeStatesGraph();{{/if}}
+
+Template['page'].helpers({
+	roots() { return TreeDocuments.find({ parent: { $exists: false } }); },
+	States() { return Templ.Tree.States; },
+	CustomStates() { return CustomStates; }
+});
+```
+```html
+{{lodash.unescape "&lt;template name=&#39;page&#39;&gt;"}}
+	{{lodash.toString "{{#Tree.Cursor cursor=roots}}"}}
+		{{lodash.toString "{{#Tree.State document=this States=States}}"}}
+		{{#if $eq data.flow "two"}}{{lodash.toString "{{#Tree.State document=this States=CustomStates}}"}}{{/if}}
+		<div class="row">
+			<div class="well well-xs pull-left">
+				<div class="btn-group">
+					{{lodash.toString "{{# Tree.Toggle state=(States.findState this)}}"}}
+						<div class="btn btn-link">
+							<i class="fa fa-fw fa-chevron-down"></i>
+						</div>
+					{{lodash.toString "{{else}}"}}
+						<div class="btn btn-link">
+							<i class="fa fa-fw fa-chevron-right"></i>
+						</div>
+					{{lodash.toString "{{/ Tree.Toggle}}"}}
+					<div class="btn">{{lodash.toString "{{this._id}}"}}</div>
+					{{lodash.toString "{{> TreeRemove document=this}}"}}
+					{{lodash.toString "{{> TreeInsert document=this type='contains'}}"}}
+				</div>
+			</div>{{#if $eq data.flow "two"}}
+			<div class="well-xs pull-left">
+				{{lodash.toString "{{> TreeInsert document=this type='custom' class='text-success'}}"}}
+				{{lodash.toString "{{# Tree.Toggle state=(CustomStates.findState this)}}"}}
+					<div class="btn btn-link">
+						<i class="fa fa-fw fa-chevron-down text-success"></i>
+					</div>
+				{{lodash.toString "{{else}}"}}
+					<div class="btn btn-link">
+						<i class="fa fa-fw fa-chevron-right text-success"></i>
+					</div>
+				{{lodash.toString "{{/ Tree.Toggle}}"}}
+			</div>{{/if}}
+		</div>
+		<div style="padding-left: 50px;">{{#if $eq data.flow "two"}}
+			<div class="row">
+				{{lodash.toString "{{# Tree.Cursor state=(CustomStates.findState this) cursor=(this.cursor 'custom')}}"}}
+					<div class="btn-group btn-group-xs">
+						<div class="btn text-success">{{lodash.toString "{{this._id}}"}}</div>
+						{{lodash.toString "{{> TreeRemove document=this class='text-success'}}"}}
+					</div>
+			</div>{{/if}}
+			{{lodash.toString "{{> Tree.Cursor state=(States.findState this) cursor=(this.cursor 'contains') contentBlock=../contentBlock theme=../theme}}"}}
+		</div>{{#if $eq data.theme "animated"}}
+	{{lodash.toString "{{else}}"}}
+		{{lodash.toString "{{#momentum plugin='fade'}}"}}
+			{{lodash.toString "{{#unless state.isClosed}}"}}
+				{{lodash.toString "{{#if cursor.count}}"}}
+					{{lodash.toString "{{#momentum plugin='fade'}}"}}
+						{{lodash.toString "{{#each cursor}}"}}
+							<div>
+								{{lodash.toString "{{#Templ.onCreated}}"}}
+									{{lodash.toString "{{> ../contentBlock}}"}}
+								{{lodash.toString "{{/Templ.onCreated}}"}}
+							</div>
+						{{lodash.toString "{{/each}}"}}
+					{{lodash.toString "{{/momentum}}"}}
+				{{lodash.toString "{{/if}}"}}
+			{{lodash.toString "{{/unless}}"}}
+		{{lodash.toString "{{/momentum}}"}}
+	{{lodash.toString "{{/Tree.Cursor}}"}}{{/if}}{{#if $eq data.theme "custom"}}
+	{{lodash.toString "{{else}}"}}
+		{{lodash.toString "{{#unless state.isClosed}}"}}
+			{{lodash.toString "{{#each cursor}}"}}
+				{{lodash.toString "{{> ../contentBlock}}"}}
+			{{lodash.toString "{{/each}}"}}
+		{{lodash.toString "{{/unless}}"}}{{/if}}
+	{{lodash.toString "{{/Tree.Cursor}}"}}
+{{lodash.unescape "&lt;/template&gt;"}}
+```
+```js
+Template['TreeInsert'].events({
+	'click': function(event, template) {
+		if (template.data && template.data.document && template.data.type)
+			TreeDocuments.insert({
+				parent: template.data.document._id,
+				type: template.data.type
+			});
+		else TreeDocuments.insert({});
+	}
+});
+Template['TreeRemove'].events({
+	'click': function(event, template) {
+		TreeDocuments.remove(template.data.document._id);
+	}
+});
+```
+```html
+{{lodash.unescape "&lt;template name=&#39;TreeInsert&#39;&gt;"}}
+	<div class="btn btn-link"><i class="fa fa-fw fa-plus {{lodash.toString "{{class}}"}}"></i></div>
+{{lodash.unescape "&lt;/template&gt;"}}
+{{lodash.unescape "&lt;template name=&#39;TreeRemove&#39;&gt;"}}
+	<div class="btn btn-link"><i class="fa fa-fw fa-remove {{lodash.toString "{{class}}"}}"></i></div>
+{{lodash.unescape "&lt;/template&gt;"}}
+```
+{{/markdown}}
+		</div>
+	</div>
+</template>
+
+<template name="TreeInsert">
+	<div class="btn btn-link"><i class="fa fa-fw fa-plus {{class}}"></i></div>
+</template>
+
+<template name="TreeRemove">
+	<div class="btn btn-link"><i class="fa fa-fw fa-remove {{class}}"></i></div>
+</template>

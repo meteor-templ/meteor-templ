@@ -3,3 +3,5 @@ Router.route('/', function() {
 });
 
 Template.registerHelper('lodash', function() { return lodash; });
+
+Drop._theme = 'DropBootstrap';

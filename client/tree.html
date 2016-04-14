@@ -123,10 +123,16 @@ Template['page'].helpers({
 {{lodash.toString "{{> TreeInsert}}"}}
 {{lodash.unescape "&lt;template name=&#39;page&#39;&gt;"}}
 	{{lodash.toString "{{#Tree.Cursor cursor=roots}}"}}
+		<!-- One tree flow -->
 		{{lodash.toString "{{#Tree.State document=this States=States}}"}}
-		{{#if $eq data.flow "two"}}{{lodash.toString "{{#Tree.State document=this States=CustomStates}}"}}{{/if}}
+		{{#if $eq data.flow "two"}}
+		<!-- Two tree flow -->
+		{{lodash.toString "{{#Tree.State document=this States=CustomStates}}"}}
+		{{/if}}
 		<div class="row">
 			<div class="well well-xs pull-left">
+				
+				<!-- One tree flow controls -->
 				<div class="btn-group">
 					{{lodash.toString "{{# Tree.Toggle state=(States.findState this)}}"}}
 						<div class="btn btn-link">
@@ -142,6 +148,7 @@ Template['page'].helpers({
 					{{lodash.toString "{{> TreeInsert document=this type='contains'}}"}}
 				</div>
 			</div>{{#if $eq data.flow "two"}}
+			<!-- Two tree flow controls -->
 			<div class="well-xs pull-left">
 				{{lodash.toString "{{> TreeInsert document=this type='custom' class='text-success'}}"}}
 				{{lodash.toString "{{# Tree.Toggle state=(CustomStates.findState this)}}"}}
@@ -156,6 +163,7 @@ Template['page'].helpers({
 			</div>{{/if}}
 		</div>
 		<div style="padding-left: 50px;">{{#if $eq data.flow "two"}}
+			<!-- Two tree flow list -->
 			<div class="row">
 				{{lodash.toString "{{# Tree.Cursor state=(CustomStates.findState this) cursor=(this.cursor 'custom')}}"}}
 					<div class="btn-group btn-group-xs">
@@ -164,9 +172,12 @@ Template['page'].helpers({
 					</div>
 				{{lodash.toString "{{/ Tree.Cursor}}"}}
 			</div>{{/if}}
+			
+			<!-- One tree flow list -->
 			{{lodash.toString "{{> Tree.Cursor state=(States.findState this) cursor=(this.cursor 'contains') contentBlock=../contentBlock theme=../theme}}"}}
 		</div>{{#if $eq data.theme "animated"}}
 	{{lodash.toString "{{else}}"}}
+		<!-- Example of animated theme -->
 		{{lodash.toString "{{#momentum plugin='fade'}}"}}
 			{{lodash.toString "{{#unless state.isClosed}}"}}
 				{{lodash.toString "{{#if cursor.count}}"}}
@@ -183,6 +194,7 @@ Template['page'].helpers({
 			{{lodash.toString "{{/unless}}"}}
 		{{lodash.toString "{{/momentum}}"}}{{/if}}{{#if $eq data.theme "custom"}}
 	{{lodash.toString "{{else}}"}}
+		<!-- Example of custom theme based on default theme -->
 		{{lodash.toString "{{#unless state.isClosed}}"}}
 			{{lodash.toString "{{#each cursor}}"}}
 				{{lodash.toString "{{> ../contentBlock}}"}}
@@ -191,6 +203,8 @@ Template['page'].helpers({
 	{{lodash.toString "{{/Tree.Cursor}}"}}
 {{lodash.unescape "&lt;/template&gt;"}}
 ```
+### Just logical templates
+For insert and remove documents.
 ```js
 Template['TreeInsert'].events({
 	'click': function(event, template) {

@@ -124,10 +124,10 @@ Template['page'].helpers({
 {{lodash.unescape "&lt;template name=&#39;page&#39;&gt;"}}
 	{{lodash.toString "{{#Tree.Cursor cursor=roots}}"}}
 		<!-- One tree flow -->
-		{{lodash.toString "{{#Tree.State document=this States=States}}"}}
+		{{lodash.toString "{{> Tree.State document=this States=States}}"}}
 		{{#if $eq data.flow "two"}}
 		<!-- Two tree flow -->
-		{{lodash.toString "{{#Tree.State document=this States=CustomStates}}"}}
+		{{lodash.toString "{{> Tree.State document=this States=CustomStates}}"}}
 		{{/if}}
 		<div class="row">
 			<div class="well well-xs pull-left">
